@@ -85,7 +85,7 @@ export default function NavbarComponent() {
 							<NavbarItem key={`${item}-${index}`}>
 								<Link
 									to={item.link}
-									onClick={() => setIsMenuOpen(false)}
+									// onClick={() => setIsMenuOpen(false)}
 									className={cn(
 										'w-full text-sm text-[#808080]',
 										pathname.includes(item.link) && 'text-[#1A1A1A]',

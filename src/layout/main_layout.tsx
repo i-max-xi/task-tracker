@@ -10,7 +10,6 @@ const MainLayout = () => {
 			<div className="pt-7">
 				<LazyPageWrapper component={<Outlet />} />
 			</div>
-
 			<Footer />
 		</main>
 	);

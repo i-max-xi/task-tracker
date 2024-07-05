@@ -1,13 +1,14 @@
+import { lazy } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from 'react-router-dom';
 import ScrollToTop from './components/shared/scroll_to_top';
 import { motion, useScroll } from 'framer-motion';
 import MainLayout from './layout/main_layout';
-import { lazy } from 'react';
 const Home = lazy(() => import('./pages/home'));
 const BusinessAutomation = lazy(() => import('./pages/business_automation'));
 const FinancialServices = lazy(() => import('./pages/financial_services'));
 const UseCases = lazy(() => import('./pages/use_cases'));
+const LogisticsAndSupply = lazy(() => import('./pages/logistics_and_supply'));
 
 function App() {
 	const { scrollYProgress } = useScroll();
@@ -30,6 +31,10 @@ function App() {
 						/>
 						<Route path="financial-services" element={<FinancialServices />} />
 						<Route path="use-cases" element={<UseCases />} />
+						<Route
+							path="logistics-supply-chain"
+							element={<LogisticsAndSupply />}
+						/>
 					</Route>
 				</Routes>
 			</div>

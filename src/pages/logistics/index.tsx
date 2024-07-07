@@ -1,8 +1,10 @@
-import InfoCard from '@/components/shared/info_card';
 import { CustomButton } from '@/components/shared_customs';
 import { Icon } from '@iconify/react/dist/iconify.js';
+import { cn } from '@nextui-org/react';
+import { useNavigate } from 'react-router-dom';
 
 const LogisticsAndSupply = () => {
+	const navigate = useNavigate();
 	return (
 		<main className="container">
 			<section className="text-center pb-10">
@@ -75,13 +77,48 @@ const LogisticsAndSupply = () => {
 						More from Logistics & Supply Chain
 					</h2>
 				</div>
-				<div className=" gap-5 space-y-5 md:space-y-0">
-					{moreConstant.map((item, index) => (
-						<InfoCard
+				<div className=" space-y-5">
+					{logistics.map((item, index) => (
+						<div
+							onClick={() => navigate(item.link)}
 							key={index}
-							title={item.title}
-							description={item.description}
-						/>
+							className="bg-secondary-light rounded-2xl hover:scale-[1.01] hover:shadow transition-all p-4 group lg:px-6 w-full gap-y-3 grid lg:grid-cols-[0.35fr,1fr] gap-x-5 cursor-pointer">
+							<div className="flex items-center justify-between gap-x-2.5">
+								<div>
+									<Icon
+										icon="eva:checkmark-square-fill"
+										fontSize={24}
+										className="text-secondary"
+									/>
+									<h1 className={cn('text-xl font-medium')}>{item.title}</h1>
+									<p className={cn('text-[#575757] text-sm leading-6')}>
+										{item.description}
+									</p>
+								</div>
+								<div className="flex-1">
+									<Icon
+										icon="fluent-emoji-high-contrast:right-arrow"
+										fontSize={22}
+										className="text-secondary group-hover:translate-x-2 transition-all"
+									/>
+								</div>
+							</div>
+							<div className="lg:grid grid-cols-auto-fill-220 gap-x-3">
+								{item.subItems.map((itx, idx) => (
+									<div key={idx}>
+										<Icon
+											icon="eva:checkmark-square-fill"
+											fontSize={18}
+											className="text-secondary"
+										/>
+										<h1 className={cn('text-base font-medium')}>{itx.title}</h1>
+										<p className={cn('text-[#575757] text-xs leading-6')}>
+											{itx.description}
+										</p>
+									</div>
+								))}
+							</div>
+						</div>
 					))}
 				</div>
 			</section>
@@ -94,6 +131,7 @@ export default LogisticsAndSupply;
 const logistics = [
 	{
 		title: 'Booking Management',
+		link: 'booking-management',
 		description:
 			'Efficiently coordinate and manage bookings to streamline logistical operations.',
 		subItems: [
@@ -114,37 +152,50 @@ const logistics = [
 			},
 		],
 	},
-];
-
-const moreConstant = [
 	{
-		title: 'HR & Payroll',
+		title: 'Order Management',
+		link: 'order-management',
 		description:
-			'Simplify your  business operations by combining HR tasks into one system. This module manages employee records, payroll, benefits, and attendance, ensuring accurate calculations and compliance',
+			'Oversee the lifecycle of orders, from placement to fulfilment, ensure timely processing and delivery.',
+		subItems: [
+			{
+				title: 'Efficient Inventory Control',
+				description:
+					'Streamlining the tracking and organization of stock levels and locations to ensure timely replenishment and prevent stock outs, optimising storage space, and minimising holding costs.',
+			},
+			{
+				title: 'Seamless Order Processing',
+				description:
+					'Implementing automated systems for order entry, verification, and fulfillment, enhancing accuracy, reducing processing times, and improving customer satisfaction through prompt delivery.',
+			},
+			{
+				title: 'Robust Logistics Co-ordination',
+				description:
+					'Coordinating the movement of goods from suppliers to customers with precision, managing transportation, warehousing, and distribution networks effectively to meet delivery deadlines and reduce lead times.',
+			},
+		],
 	},
 	{
-		title: 'Wholesale & Retail',
+		title: 'Trucking',
+		link: 'trucking',
 		description:
-			'Access an integrated business management solution with financial tracking, operational control, pricing management, inventory oversight, and cash flow monitoring. Enhance efficiency, financial health, and focus on business growth.',
-	},
-	{
-		title: 'Manufacturing',
-		description:
-			'Enhance your manufacturing operations with a unified manufacturing management solution covering production control, inventory management, quality assurance, and supply chain oversight, optimizing efficiency and supporting business expansion',
-	},
-	{
-		title: 'Accounting',
-		description:
-			'Improve your financial oversight with this advanced tool providing real-time insights into budgeting, expense management, revenue tracking, and transaction reconciliation for informed decision-making.',
-	},
-	{
-		title: 'CRM',
-		description:
-			'Organize and manage customer interactions and data, optimizing customer service, sales, and marketing efforts to enhance relationships and drive business growth.',
-	},
-	{
-		title: 'Hospitality',
-		description:
-			'Manage your hospitality business with our comprehensive solution that integrates guest information, administrative tasks, financial management, and a special guest portal into one easy system.',
+			'The backbone of logistics, delivering goods and driving economies forward.',
+		subItems: [
+			{
+				title: 'Efficient Transportation',
+				description:
+					'Trucking enables the timely delivery of goods across vast distances, providing a crucial link in supply chains by efficiently moving cargo from manufacturers to distributors and retailers.',
+			},
+			{
+				title: 'Flexibility and Accessibility',
+				description:
+					'With a highly adaptable network, trucking offers the flexibility to reach even remote locations, ensuring goods can be transported door-to-door with minimal disruption and maximum accessibility.',
+			},
+			{
+				title: 'Economic Backbone',
+				description:
+					'Serving as the backbone of many economies, trucking fosters economic growth by facilitating trade and commerce, supporting industries ranging from retail to manufacturing through reliable transportation services.',
+			},
+		],
 	},
 ];

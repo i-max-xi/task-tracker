@@ -4,11 +4,12 @@ import { Route, Routes } from 'react-router-dom';
 import ScrollToTop from './components/shared/scroll_to_top';
 import { motion, useScroll } from 'framer-motion';
 import MainLayout from './layout/main_layout';
+import BookingManagement from './pages/logistics/booking_management';
 const Home = lazy(() => import('./pages/home'));
 const BusinessAutomation = lazy(() => import('./pages/business_automation'));
 const FinancialServices = lazy(() => import('./pages/financial_services'));
 const UseCases = lazy(() => import('./pages/use_cases'));
-const LogisticsAndSupply = lazy(() => import('./pages/logistics_and_supply'));
+const LogisticsAndSupply = lazy(() => import('./pages/logistics'));
 
 function App() {
 	const { scrollYProgress } = useScroll();
@@ -34,6 +35,10 @@ function App() {
 						<Route
 							path="logistics-supply-chain"
 							element={<LogisticsAndSupply />}
+						/>
+						<Route
+							path="logistics-supply-chain/booking-management"
+							element={<BookingManagement />}
 						/>
 					</Route>
 				</Routes>

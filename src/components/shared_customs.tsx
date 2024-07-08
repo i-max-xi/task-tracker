@@ -3,6 +3,7 @@ import { Button, ButtonProps, cn } from '@nextui-org/react';
 interface ICustomButton extends ButtonProps {
 	children: React.ReactNode;
 	className?: string;
+	selector?: string;
 }
 export const CustomButton = ({
 	children,

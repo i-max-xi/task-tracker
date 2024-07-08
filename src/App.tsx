@@ -5,6 +5,7 @@ import ScrollToTop from './components/shared/scroll_to_top';
 import { motion, useScroll } from 'framer-motion';
 import MainLayout from './layout/main_layout';
 import BookingManagement from './pages/logistics/booking_management';
+import Pricing from './pages/pricing';
 const Home = lazy(() => import('./pages/home'));
 const BusinessAutomation = lazy(() => import('./pages/business_automation'));
 const FinancialServices = lazy(() => import('./pages/financial_services'));
@@ -32,6 +33,7 @@ function App() {
 						/>
 						<Route path="financial-services" element={<FinancialServices />} />
 						<Route path="use-cases" element={<UseCases />} />
+						<Route path="pricing" element={<Pricing />} />
 						<Route
 							path="logistics-supply-chain"
 							element={<LogisticsAndSupply />}

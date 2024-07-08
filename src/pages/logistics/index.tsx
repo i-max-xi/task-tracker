@@ -43,7 +43,7 @@ const LogisticsAndSupply = () => {
 						},
 					].map((item, index) => (
 						<div key={index}>
-							<h2>{item.title}</h2>
+							<h2 className="text-nowrap">{item.title}</h2>
 							<div className="w-[20%] h-0.5 bg-black my-1" />
 							<p className="text-xs text-secondary-black">{item.description}</p>
 						</div>

@@ -84,10 +84,10 @@ const UseCases = () => {
 				</div>
 			</section>
 			<div
-				className={`border-t  mt-16 p-4 transition-all duration-300  ${
+				className={`border-t  mt-16 p-4 transition-all duration-300 ${
 					isStickyVisible ? 'sticky top-0 bg-white z-50 w-full' : 'hidden'
 				}`}>
-				<div className={cn('flex gap-5 max-w-[1200px] bg-red-200')}>
+				<div className={cn('flex gap-5 max-w-[1200px]')}>
 					<p className="text-secondary flex items-center gap-x-3">
 						Customise your experience by
 						<Icon

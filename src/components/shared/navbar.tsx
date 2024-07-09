@@ -43,7 +43,7 @@ export default function NavbarComponent() {
 
 	const { pathname } = useLocation();
 
-	const isUseCase = pathname === '/use-cases';
+	const isUseCase = pathname.includes('use-cases');
 
 	return (
 		<>

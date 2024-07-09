@@ -4,6 +4,7 @@ interface ICustomButton extends ButtonProps {
 	children: React.ReactNode;
 	className?: string;
 	selector?: string;
+	to?: string;
 }
 export const CustomButton = ({
 	children,

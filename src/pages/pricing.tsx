@@ -139,7 +139,7 @@ const Pricing = () => {
 					<h2 className="font-medium text-3xl lg:text-4xl mb-5">
 						Tools to mix & match
 					</h2>
-					<div className="flex gap-5 mb-10">
+					<div className="flex gap-5 flex-wrap mb-10">
 						{['All', 'Free', 'Commerce', 'Customers', 'Banking', 'Staff'].map(
 							(item, index) => (
 								<CustomButton

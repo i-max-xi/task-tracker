@@ -14,11 +14,10 @@ import AllExperience from './all_experience';
 const UseCases = () => {
 	const [isStickyVisible, setIsStickyVisible] = React.useState(false);
 	const sectionRef = useRef<HTMLDivElement | null>(null);
+	const { search } = useLocation();
 
-	const params = new URLSearchParams(location.search);
+	const params = new URLSearchParams(search);
 	const view = params.get('v');
-
-	const { pathname } = useLocation();
 
 	const displayView: Record<string, JSX.Element> = {
 		retail: <Retail />,
@@ -130,7 +129,7 @@ const UseCases = () => {
 								<div>
 									{navLinks.map(
 										(item) =>
-											pathname === item.link && (
+											view === item.link.split('=')[1] && (
 												<div key={item.link} className="text-xl">
 													{item.title}
 												</div>
@@ -154,7 +153,7 @@ const UseCases = () => {
 											as={Link}
 											to={subNav.link}
 											className={cn(
-												'relative cursor-pointer overflow-hidden rounded-md text-secondary bg-transparent border-2 border-secondary font-medium flex items-center gap-x-2 transition-all custom-button hover:text-white',
+												'relative cursor-pointer overflow-hidden rounded-md text-secondary bg-transparent border-2 border-secondary font-medium flex items-center gap-x-2 transition-all custom-button hover:text-white mb-3',
 												view === subNav.link.split('=')[1] &&
 													'bg-secondary text-white',
 											)}>
@@ -222,14 +221,7 @@ const UseCases = () => {
 				)}
 			</AnimatePresence>
 
-			<AnimatePresence>
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 100, y: 0 }}
-					className="mt-8">
-					{displayView[String(view)]}
-				</motion.div>
-			</AnimatePresence>
+			{displayView[String(view)]}
 		</main>
 	);
 };

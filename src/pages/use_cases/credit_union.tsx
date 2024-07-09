@@ -2,11 +2,15 @@ import InfoSectionWithGoals from '@/components/reusable/info_section_with_goals'
 import InfoSectionWithLinksAndCards from '@/components/reusable/infosection_links_cards';
 import SalesSection from '@/components/reusable/sales_section';
 import { Icon } from '@iconify/react/dist/iconify.js';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const CreditUnions = () => {
 	return (
-		<section>
+		<motion.section
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 100 }}
+			transition={{ duration: 1.5 }}>
 			<SalesSection
 				title={'Credit Unions'}
 				linkText="Try the Foundry POS Demo"
@@ -229,7 +233,7 @@ const CreditUnions = () => {
 					</div>
 				</div>
 			</section>
-		</section>
+		</motion.section>
 	);
 };
 

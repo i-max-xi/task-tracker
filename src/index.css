@@ -19,3 +19,12 @@
 .custom-button:hover::before {
 	left: 0;
 }
+
+.sticky-nav {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
+	background-color: white; /* Adjust as needed */
+	transition: top 0.3s;
+}

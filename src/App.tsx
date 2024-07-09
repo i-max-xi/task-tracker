@@ -6,6 +6,7 @@ import { motion, useScroll } from 'framer-motion';
 import MainLayout from './layout/main_layout';
 import BookingManagement from './pages/logistics/booking_management';
 import Pricing from './pages/pricing';
+import NotFound from './components/shared/not_found';
 const Home = lazy(() => import('./pages/home'));
 const BusinessAutomation = lazy(() => import('./pages/business_automation'));
 const FinancialServices = lazy(() => import('./pages/financial_services'));
@@ -25,8 +26,9 @@ function App() {
 
 				<ScrollToTop />
 				<Routes>
-					<Route path="/*" element={<MainLayout />}>
+					<Route path="/" element={<MainLayout />}>
 						<Route path="" element={<Home />} />
+						<Route path="*" element={<NotFound />} />
 						<Route
 							path="business-automation"
 							element={<BusinessAutomation />}

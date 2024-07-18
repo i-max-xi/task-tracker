@@ -62,7 +62,7 @@ const SignUp = () => {
 				<p>Your information is protected</p>
 			</div>
 
-			<form onSubmit={handleSubmit(onSubmit)} className="p-3 px-10">
+			<form onSubmit={handleSubmit(onSubmit)} className="p-3 px-10 space-y-5">
 				{data.map((item, index) => {
 					const fieldName = item.name as keyof z.infer<typeof signupSchema>;
 
@@ -96,11 +96,13 @@ const SignUp = () => {
 					);
 				})}
 
-				<CustomButton
-					type="submit"
-					className="mt-10 mb-2 bg-primary text-white w-full text-base">
-					Submit
-				</CustomButton>
+				<div className="w-full pt-2 pb-3">
+					<CustomButton
+						type="submit"
+						className=" bg-primary text-white w-full text-base">
+						Submit
+					</CustomButton>
+				</div>
 			</form>
 		</main>
 	);

@@ -1,4 +1,4 @@
-import { CustomButton } from '@/components/shared_customs';
+import { CustomButton } from '@/components/shared/shared_customs';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import React from 'react';
 import ScrollIntoView from 'react-scroll-into-view';

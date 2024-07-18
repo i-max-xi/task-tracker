@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Accordion, AccordionItem } from '@nextui-org/react';
-import { CustomButton } from '../shared_customs';
+import { CustomButton } from './shared_customs';
 import { Icon } from '@iconify/react/dist/iconify.js';
 
 const Footer = () => {
@@ -22,24 +22,7 @@ const Footer = () => {
 					/>
 					<p className="text-sm">Empowering African Businesses for Growth</p>
 					<div className="flex items-center gap-x-3">
-						{[
-							{
-								icon: 'bi:facebook',
-								href: 'https://www.facebook.com/profile.php?id=61558790128679',
-							},
-							{
-								icon: 'bi:instagram',
-								href: 'https://www.instagram.com/Foundry_platform/',
-							},
-							{
-								icon: 'simple-icons:linkedin',
-								href: 'https://www.linkedin.com/company/foundryplatform',
-							},
-							{
-								icon: 'fa-brands:youtube',
-								href: 'https://www.youtube.com/@foundry-platform',
-							},
-						].map((item, index) => (
+						{socials.map((item, index) => (
 							<a
 								key={index}
 								href={item.href}
@@ -111,18 +94,18 @@ const Footer = () => {
 							{
 								title: 'Google play',
 								icon: '/icons/playstore.svg',
-								link: '',
+								link: 'https://play.google.com/store/apps/developer?id=access+89&hl=en_US',
 							},
 						].map((item, index) => (
-							<CustomButton
-								key={index}
-								className="flex gap-x-3 bg-secondary p-8 rounded-md items-center ">
-								<img src={item.icon} alt={item.title} />
-								<div className="flex flex-col items-start">
-									<p className="text-[#EBEBEB] text-sm">Download on the</p>
-									<p className="text-lg text-white">{item.title} </p>
-								</div>
-							</CustomButton>
+							<a href={item.link} target="_blank" key={index}>
+								<CustomButton className="flex gap-x-3 bg-secondary p-8 rounded-md items-center ">
+									<img src={item.icon} alt={item.title} />
+									<div className="flex flex-col items-start">
+										<p className="text-[#EBEBEB] text-sm">Download on the</p>
+										<p className="text-lg text-white">{item.title} </p>
+									</div>
+								</CustomButton>
+							</a>
 						))}
 					</div>
 				</div>
@@ -136,6 +119,25 @@ const Footer = () => {
 };
 
 export default Footer;
+
+const socials = [
+	{
+		icon: 'bi:facebook',
+		href: 'https://www.facebook.com/profile.php?id=61558790128679',
+	},
+	{
+		icon: 'bi:instagram',
+		href: 'https://www.instagram.com/Foundry_platform/',
+	},
+	{
+		icon: 'simple-icons:linkedin',
+		href: 'https://www.linkedin.com/company/foundryplatform',
+	},
+	{
+		icon: 'fa-brands:youtube',
+		href: 'https://www.youtube.com/@foundry-platform',
+	},
+];
 
 const FOOTER_ITEMS = [
 	{

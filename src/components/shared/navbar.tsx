@@ -7,39 +7,18 @@ import {
 	NavbarMenu,
 	NavbarMenuItem,
 	cn,
+	useDisclosure,
 } from '@nextui-org/react';
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { CustomButton } from '../shared_customs';
+import { CustomButton } from './shared_customs';
+import CustomModal from './modal';
+import SignUp from '../sign_up';
 
 export default function NavbarComponent() {
-	const menuItems = [
-		{
-			link: '/business-automation',
-			title: 'Business Automation',
-		},
-		{
-			link: '/financial-services',
-			title: 'Financial Services',
-		},
-		{
-			link: '/logistics-supply-chain',
-			title: 'Logistics & Supply Chain',
-		},
-		{
-			link: '/products',
-			title: 'Products',
-		},
-		{
-			link: '/use-cases',
-			title: 'Use Cases',
-		},
-		{
-			link: '/pricing',
-			title: 'Pricing',
-		},
-	];
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+	const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
 	const { pathname } = useLocation();
 
@@ -65,6 +44,13 @@ export default function NavbarComponent() {
 						aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
 					/>
 				</NavbarContent>
+
+				<CustomModal
+					isOpen={isOpen}
+					onOpenChange={onOpenChange}
+					header="Register/Sign in"
+					body={<SignUp />}
+				/>
 
 				<NavbarContent className="lg:hidden pr-3" justify="center">
 					<NavbarBrand as={Link} to="/" className="flex gap-x-3">
@@ -98,7 +84,12 @@ export default function NavbarComponent() {
 				</NavbarContent>
 
 				<NavbarContent justify="end">
-					<NavbarItem>
+					<NavbarItem className=" gap-x-3 hidden lg:flex">
+						<CustomButton
+							onPress={() => onOpen()}
+							className="bg-primary text-white hidden md:flex">
+							Sign up
+						</CustomButton>
 						<CustomButton className="bg-[#EDF2EE] border-2 border-secondary text-primary">
 							Log In
 						</CustomButton>
@@ -119,8 +110,45 @@ export default function NavbarComponent() {
 							</Link>
 						</NavbarMenuItem>
 					))}
+					<div className="flex gap-x-4">
+						<CustomButton
+							onPress={() => onOpen()}
+							className="bg-primary text-white">
+							Sign up
+						</CustomButton>
+						<CustomButton className="bg-[#EDF2EE] border-2 border-secondary text-primary">
+							Log In
+						</CustomButton>
+					</div>
 				</NavbarMenu>
 			</Navbar>
 		</>
 	);
 }
+
+const menuItems = [
+	{
+		link: '/business-automation',
+		title: 'Business Automation',
+	},
+	{
+		link: '/financial-services',
+		title: 'Financial Services',
+	},
+	{
+		link: '/logistics-supply-chain',
+		title: 'Logistics & Supply Chain',
+	},
+	{
+		link: '/products',
+		title: 'Products',
+	},
+	{
+		link: '/use-cases',
+		title: 'Use Cases',
+	},
+	{
+		link: '/pricing',
+		title: 'Pricing',
+	},
+];

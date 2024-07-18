@@ -2,11 +2,11 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import {
 	CustomInputTextField,
 	CustomSelectField,
-} from './shared/custom-text-field';
+} from '../components/shared/custom-text-field';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { CustomButton } from './shared/shared_customs';
+import { CustomButton } from '../components/shared/shared_customs';
 import { blockInvalidChar } from '@/utils/helper';
 
 const passwordValidation = new RegExp(

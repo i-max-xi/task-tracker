@@ -13,7 +13,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { CustomButton } from './shared_customs';
 import CustomModal from './modal';
-import SignUp from '../sign_up';
+import SignUp from '../../pages/sign_up';
 
 export default function NavbarComponent() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,7 +48,7 @@ export default function NavbarComponent() {
 				<CustomModal
 					isOpen={isOpen}
 					onOpenChange={onOpenChange}
-					header="Register/Sign in"
+					header="Register/Sign up"
 					body={<SignUp />}
 				/>
 

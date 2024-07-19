@@ -54,7 +54,6 @@ const SignUp = () => {
 		console.log(data);
 	};
 
-	console.log(errors);
 	return (
 		<main>
 			<div className="bg-green-100 flex items-center text-xs justify-center gap-x-2 py-1 mt-2">

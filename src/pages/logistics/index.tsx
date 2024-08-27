@@ -136,19 +136,19 @@ const logistics = [
 			'Efficiently coordinate and manage bookings to streamline logistical operations.',
 		subItems: [
 			{
-				title: 'Efficient Scheduling',
+				title: 'Contracts and Bookings',
 				description:
-					'Streamline the allocation of resources and time slots, optimising bookings to minimise gaps and maximise utilisation',
+					'Manage contracts and bookings across your provider network, optimize planning with real-time analytics, and minimize booking discrepancies by fine-tuning route and date parameters.',
 			},
 			{
-				title: 'Real-time Updates',
+				title: 'A Single Source of Truth',
 				description:
-					'Maintain accurate and up-to-date information on bookings, ensuring prompt communication and adaptability to changes or cancellations.',
+					'Centralize shipment tracking, data analysis, and communications with visibility into supplier and carrier workflows. Evaluate shipping performance and volumes, create visualizations, and automatically generate progress reports.',
 			},
 			{
-				title: 'Resource Optimisation',
+				title: 'Better Data, More Agility',
 				description:
-					'Utilise data analytics to forecast demand, allocate resources effectively, and identify opportunities for improving efficiency in logistics operations.',
+					'Utilize data to plan for both current and future needs. Forward-looking booking insights enable proactive allocation and procurement decisions, enhancing the agility and resilience of your supply chain.',
 			},
 		],
 	},
@@ -159,19 +159,19 @@ const logistics = [
 			'Oversee the lifecycle of orders, from placement to fulfilment, ensure timely processing and delivery.',
 		subItems: [
 			{
-				title: 'Efficient Inventory Control',
+				title: 'Enhance Supply Chain Efficiency',
 				description:
-					'Streamlining the tracking and organization of stock levels and locations to ensure timely replenishment and prevent stock outs, optimising storage space, and minimising holding costs.',
+					'Build trust by enabling end-to-end, line-level transparency throughout your entire supply chain. Make informed decisions to enhance receiving operations and reduce disruptions in fulfillment.',
 			},
 			{
-				title: 'Seamless Order Processing',
+				title: 'Reduce Cost Through Automation',
 				description:
-					'Implementing automated systems for order entry, verification, and fulfillment, enhancing accuracy, reducing processing times, and improving customer satisfaction through prompt delivery.',
+					"Establish supplier SLAs to guarantee prompt order bookings, cost optimization, and timely deliveries. Work closely with suppliers using Flexport's PO messaging and collaboration tools, ensuring instant synchronization of approved order changes with your system of record.",
 			},
 			{
-				title: 'Robust Logistics Co-ordination',
+				title: 'Increase Customer Satisfaction',
 				description:
-					'Coordinating the movement of goods from suppliers to customers with precision, managing transportation, warehousing, and distribution networks effectively to meet delivery deadlines and reduce lead times.',
+					'Enhance your delivery performance and reduce the risk of stockouts. Keep both internal and external stakeholders informed with real-time product status updates, allowing you to scale seamlessly for growth and maintain exceptional service, even as demand rises.',
 			},
 		],
 	},

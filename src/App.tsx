@@ -7,6 +7,8 @@ import MainLayout from './layout/main_layout';
 import BookingManagement from './pages/logistics/booking_management';
 import Pricing from './pages/pricing';
 import NotFound from './components/shared/not_found';
+import OrderManagement from './pages/logistics/order_management';
+import Trucking from './pages/logistics/trucking';
 const Home = lazy(() => import('./pages/home'));
 const BusinessAutomation = lazy(() => import('./pages/business_automation'));
 const FinancialServices = lazy(() => import('./pages/financial_services'));
@@ -44,6 +46,14 @@ function App() {
 						<Route
 							path="logistics-supply-chain/booking-management"
 							element={<BookingManagement />}
+						/>
+						<Route
+							path="logistics-supply-chain/order-management"
+							element={<OrderManagement />}
+						/>
+						<Route
+							path="logistics-supply-chain/trucking"
+							element={<Trucking />}
 						/>
 					</Route>
 				</Routes>

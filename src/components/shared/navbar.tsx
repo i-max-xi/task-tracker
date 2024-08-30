@@ -22,20 +22,17 @@ export default function NavbarComponent() {
 
 	const { pathname } = useLocation();
 
-	const isUseCase = pathname.includes('use-cases');
-
 	return (
 		<>
 			<Navbar
 				isMenuOpen={isMenuOpen}
 				onMenuOpenChange={setIsMenuOpen}
 				isBordered
-				// position="static"
+				position="static"
 				{...{
 					ariaLabel: 'Foundry Navbar',
-					shouldHideOnScroll: isUseCase ? false : true,
+					shouldHideOnScroll: false,
 					isInverted: true,
-					position: isUseCase ? 'static' : 'sticky',
 				}}
 				maxWidth="2xl"
 				className="bg-white w-full">

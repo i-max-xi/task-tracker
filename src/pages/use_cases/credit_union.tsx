@@ -3,6 +3,7 @@ import InfoSectionWithLinksAndCards from '@/components/reusable/infosection_link
 import SalesSection from '@/components/reusable/sales_section';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { motion } from 'framer-motion';
+import ReactPlayer from 'react-player';
 import { Link } from 'react-router-dom';
 
 const CreditUnions = () => {
@@ -173,8 +174,11 @@ const CreditUnions = () => {
 								</div>
 							))}
 						</div>
-						<div className="bg-[#D9D9D9]/30 flex justify-center items-center h-[25rem]">
-							<img src="/icons/camera.svg" alt="camera" className="w-[5rem]" />
+						<div className="w-full bg-gray-100">
+							<ReactPlayer
+								width={'100%'}
+								url="https://www.youtube.com/watch?v=1R2PRHEsezg"
+							/>
 						</div>
 					</div>
 

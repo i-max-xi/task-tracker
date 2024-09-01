@@ -7,7 +7,7 @@ const Trucking = () => {
 	return (
 		<main>
 			<section className="container">
-				<div className=" border-3 border-white rounded-xl px-5 lg:px-28 md:pt-16 md:pb-28 relative overflow-hidden flex flex-col-reverse">
+				<div className=" border-3 border-white rounded-xl px-5 lg:px-28 md:pt-16 md:pb-36 relative overflow-hidden flex flex-col-reverse">
 					<div className="my-auto pt-5 md:pt-10 mb-5 md:mb-0 lg:max-w-lg md:max-w-xs">
 						<h1 className="font-medium text-3xl md:text-4xl">
 							Empowering your Cargo, Exceeding your expectations

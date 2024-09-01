@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import React from 'react';
 import ScrollIntoView from 'react-scroll-into-view';
 import { Link } from 'react-router-dom';
-import { cn } from '@nextui-org/react';
+import { Image, cn } from '@nextui-org/react';
 import CustomFAQs from '@/components/shared/custom-faq';
 
 const Pricing = () => {
@@ -53,10 +53,15 @@ const Pricing = () => {
 								</CustomButton>
 							</div>
 						</div>
-						<img
+						<Image
 							src="/images/LS_3.webp"
-							alt="pos device"
-							className="md:w-[19rem] lg:w-[21rem] md:absolute right-10 top-0"
+							alt="AI marketplace"
+							width={336}
+							height={458}
+							classNames={{
+								wrapper: 'md:absolute right-10 rounded-none top-0',
+								img: 'rounded-none',
+							}}
 						/>
 					</div>
 

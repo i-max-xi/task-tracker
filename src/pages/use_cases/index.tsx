@@ -1,8 +1,7 @@
 import { CustomButton } from '@/components/shared/shared_customs';
 import { Icon } from '@iconify/react/dist/iconify.js';
-import React, { useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Accordion, AccordionItem, cn } from '@nextui-org/react';
+import { Accordion, AccordionItem, Image, cn } from '@nextui-org/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Retail from './retail';
 import MicroFinance from './micro_finance';
@@ -10,50 +9,32 @@ import Restaurants from './restaurants';
 import Schools from './school';
 import CreditUnions from './credit_union';
 import AllExperience from './all_experience';
+import { useInView } from 'react-intersection-observer';
 
 const UseCases = () => {
-	const [isStickyVisible, setIsStickyVisible] = React.useState(false);
-	const sectionRef = useRef<HTMLDivElement | null>(null);
+	const { ref, inView } = useInView({
+		threshold: 0,
+		initialInView: true,
+	});
+
 	const { search } = useLocation();
 
 	const params = new URLSearchParams(search);
 	const view = params.get('v');
 
 	const displayView: Record<string, JSX.Element> = {
+		all: <AllExperience />,
 		retail: <Retail />,
 		'micro-finance': <MicroFinance />,
 		restaurants: <Restaurants />,
 		'credit-unions': <CreditUnions />,
 		schools: <Schools />,
-		null: <AllExperience />,
 	};
-
-	const handleScroll = () => {
-		if (sectionRef.current) {
-			const sectionRect = sectionRef.current.getBoundingClientRect();
-
-			const isSectionInView =
-				sectionRect.top < window.innerHeight && sectionRect.bottom >= 0;
-
-			if (sectionRect.bottom <= window.innerHeight && !isSectionInView) {
-				setIsStickyVisible(true);
-			} else {
-				setIsStickyVisible(false);
-			}
-		}
-	};
-
-	React.useEffect(() => {
-		window.addEventListener('scroll', handleScroll);
-		return () => {
-			window.removeEventListener('scroll', handleScroll);
-		};
-	}, []);
 
 	return (
 		<main>
 			{/* hero */}
-			<section ref={sectionRef} className="container">
+			<section ref={ref} className="container">
 				<div className="border-3 border-white rounded-xl relative overflow-hidden flex flex-col">
 					<div className="lg:px-28 md:pt-16 md:pb-28 px-5 flex flex-col-reverse md:flex-col">
 						<div className="lg:max-w-lg md:max-w-xs">
@@ -74,10 +55,15 @@ const UseCases = () => {
 								</CustomButton>
 							</div>
 						</div>
-						<img
+						<Image
 							src="/images/LS_3.webp"
-							alt="pos device"
-							className="md:w-[19rem] lg:w-[21rem] md:absolute right-10 top-0"
+							alt="AI marketplace"
+							width={336}
+							height={458}
+							classNames={{
+								wrapper: 'md:absolute right-10 rounded-none top-0',
+								img: 'rounded-none',
+							}}
 						/>
 					</div>
 
@@ -97,6 +83,13 @@ const UseCases = () => {
 										key={index}
 										as={Link}
 										to={subNav.link}
+										onPress={() =>
+											window.scrollTo({
+												top: 733,
+												left: 0,
+												behavior: 'smooth',
+											})
+										}
 										className={cn(
 											'relative cursor-pointer overflow-hidden rounded-md text-secondary bg-transparent border-2 border-secondary font-medium flex items-center gap-x-2 transition-all custom-button hover:text-white',
 											view === subNav.link.split('=')[1] &&
@@ -111,7 +104,7 @@ const UseCases = () => {
 				</div>
 			</section>
 
-			{isStickyVisible && (
+			{!inView && (
 				<div className="lg:hidden flex sticky top-0 z-50 w-full shadow-md bg-white">
 					<Accordion
 						itemClasses={{
@@ -124,7 +117,7 @@ const UseCases = () => {
 						}}
 						isCompact>
 						<AccordionItem
-							aria-label="Accordion 1"
+							aria-label="navlink-mobile"
 							title={
 								<div>
 									{navLinks.map(
@@ -152,6 +145,13 @@ const UseCases = () => {
 											key={index}
 											as={Link}
 											to={subNav.link}
+											onPress={() =>
+												window.scrollTo({
+													top: 733,
+													left: 0,
+													behavior: 'smooth',
+												})
+											}
 											className={cn(
 												'relative cursor-pointer overflow-hidden rounded-md text-secondary bg-transparent border-2 border-secondary font-medium flex items-center gap-x-2 transition-all custom-button hover:text-white mb-3',
 												view === subNav.link.split('=')[1] &&
@@ -168,7 +168,7 @@ const UseCases = () => {
 			)}
 
 			<AnimatePresence>
-				{isStickyVisible && (
+				{!inView && (
 					<motion.div
 						exit={{ opacity: 0 }}
 						className={
@@ -194,6 +194,13 @@ const UseCases = () => {
 											key={index}
 											as={Link}
 											to={subNav.link}
+											onPress={() =>
+												window.scrollTo({
+													top: 733,
+													left: 0,
+													behavior: 'smooth',
+												})
+											}
 											className={cn(
 												'relative cursor-pointer overflow-hidden rounded-md text-secondary bg-transparent border-2 border-secondary font-medium flex items-center gap-x-2 transition-all custom-button hover:text-white',
 												view === subNav.link.split('=')[1] &&
@@ -231,7 +238,7 @@ export default UseCases;
 const navLinks = [
 	{
 		title: 'All',
-		link: '/use-cases',
+		link: '/use-cases?v=all',
 	},
 	{
 		title: 'Retail',

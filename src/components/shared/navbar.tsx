@@ -67,7 +67,7 @@ export default function NavbarComponent() {
 						{menuItems.map((item, index) => (
 							<NavbarItem key={`${item}-${index}`}>
 								<Link
-									to={item.link}
+									to={item.link + (item.title === 'Use Cases' ? '?v=all' : '')}
 									// onClick={() => setIsMenuOpen(false)}
 									className={cn(
 										'w-full text-sm text-[#808080]',

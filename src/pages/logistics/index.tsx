@@ -1,6 +1,6 @@
 import { CustomButton } from '@/components/shared/shared_customs';
 import { Icon } from '@iconify/react/dist/iconify.js';
-import { cn } from '@nextui-org/react';
+import { Image, cn } from '@nextui-org/react';
 import { useNavigate } from 'react-router-dom';
 
 const LogisticsAndSupply = () => {
@@ -49,20 +49,30 @@ const LogisticsAndSupply = () => {
 						</div>
 					))}
 				</div>
-				<img
+				<Image
 					src="/icons/Map_1.svg"
 					alt="map_1"
-					className="w-[20rem] md:w-[27rem] absolute right-0 top-0 -z-0"
+					width={320}
+					height={300}
+					classNames={{
+						wrapper: 'hidden md:block absolute right-0 top-0 -z-0',
+					}}
 				/>
-				<img
+
+				<Image
 					src="/images/LS_1.webp"
 					alt="truck"
-					className="md:w-[21rem] ml-auto mr-32 "
+					width={320}
+					height={200}
+					classNames={{
+						wrapper: 'ml-auto mr-32 ',
+					}}
 				/>
+
 				<img
 					src="/images/LS_2.webp"
 					alt="card"
-					className="w-[12rem] absolute md:top-2/3 top-1/2 -translate-y-1/2 right-0 md:right-10"
+					className="w-[12rem] absolute md:top-2/3 top-1/2 z-10 -translate-y-1/2 right-0 md:right-10"
 				/>
 				<img
 					src="/icons/Map_2.svg"

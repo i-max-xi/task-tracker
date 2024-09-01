@@ -1,6 +1,7 @@
 import InfoCard from '@/components/shared/info_card';
 import { CustomButton } from '@/components/shared/shared_customs';
 import { Icon } from '@iconify/react/dist/iconify.js';
+import { Image } from '@nextui-org/react';
 
 const BusinessAutomation = () => {
 	return (
@@ -22,7 +23,7 @@ const BusinessAutomation = () => {
 			</section>
 
 			<section className="border-3 border-white rounded-xl flex justify-center items-center pt-20 md:pt-16 mt-[4.5rem] lg:mt-10 relative">
-				<div className="absolute -top-24 md:-top-10 left-1/2 transform -translate-x-1/2 w-[70%] lg:w-[50%] mx-auto bg-white rounded-3xl p-4 grid grid-cols-auto-fill-150 gap-2">
+				<div className="absolute -top-24 md:-top-10 left-1/2 transform z-50 -translate-x-1/2 w-[70%] lg:w-[50%] mx-auto bg-white rounded-3xl p-4 grid grid-cols-auto-fill-150 gap-2">
 					{[
 						{
 							title: 'Manage Cashflow',
@@ -45,10 +46,11 @@ const BusinessAutomation = () => {
 					))}
 				</div>
 
-				<img
+				<Image
 					src="/images/BA_1.webp"
+					width={450}
+					height={320}
 					alt="pos device"
-					className="w-[20rem] md:w-[28rem]"
 				/>
 			</section>
 

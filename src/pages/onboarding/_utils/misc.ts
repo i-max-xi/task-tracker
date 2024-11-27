@@ -853,19 +853,19 @@ export const countries = [
   },
   {
     name: 'Saint Kitts and Nevis',
-    icon: 'emojione:flag-for-saint-kitts-and-nevis',
+    icon: 'emojione:flag-for-st-kitts-and-nevis',
     code: 'KN',
     phoneCode: '+1-869',
   },
   {
     name: 'Saint Lucia',
-    icon: 'emojione:flag-for-saint-lucia',
+    icon: 'emojione:flag-for-st-lucia',
     code: 'LC',
     phoneCode: '+1-758',
   },
   {
     name: 'Saint Vincent and the Grenadines',
-    icon: 'emojione:flag-for-saint-vincent-and-the-grenadines',
+    icon: 'emojione:flag-for-st-vincent-and-grenadines',
     code: 'VC',
     phoneCode: '+1-784',
   },

@@ -5,19 +5,23 @@ import BasicInformation from './_components/_tabs/basic-information';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import BusinessInformation from './_components/_tabs/business-information';
 import PasswordSetting from './_components/_tabs/password';
+import { useNavigate } from 'react-router-dom';
 type ITab = 'country' | 'basic-information' | 'business-information';
 const Onboarding = () => {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<ITab>('country');
   const tabs: Record<
     string,
     {
-      prev: string;
+      prev: string | (() => void);
       next: string | (() => void);
       component: JSX.Element;
     }
   > = {
     country: {
-      prev: '',
+      prev: () => {
+        navigate('/');
+      },
       next: 'basic-information',
       component: <Country />,
     },
@@ -33,7 +37,7 @@ const Onboarding = () => {
     },
     password: {
       prev: 'business-information',
-      next: '',
+      next: () => null,
       component: <PasswordSetting />,
     },
   };
@@ -44,8 +48,10 @@ const Onboarding = () => {
           className="flex items-center justify-start cursor-pointer"
           onClick={(event) => {
             event.preventDefault();
-            if (tabs?.[activeTab]?.prev) {
+            if (typeof tabs?.[activeTab]?.prev == 'string') {
               setActiveTab(tabs?.[activeTab]?.prev as ITab);
+            } else if (typeof tabs?.[activeTab]?.prev == 'function') {
+              tabs?.[activeTab]?.prev();
             }
           }}
         >

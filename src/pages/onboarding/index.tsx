@@ -6,15 +6,18 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import BusinessInformation from './_components/_tabs/business-information';
 import PasswordSetting from './_components/_tabs/password';
 import { useNavigate } from 'react-router-dom';
+
 type ITab = 'country' | 'basic-information' | 'business-information';
+type TReturnValue = void | string;
+
 const Onboarding = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<ITab>('country');
   const tabs: Record<
     string,
     {
-      prev: string | (() => void);
-      next: string | (() => void);
+      prev: () => TReturnValue;
+      next: () => TReturnValue;
       component: JSX.Element;
     }
   > = {
@@ -22,22 +25,34 @@ const Onboarding = () => {
       prev: () => {
         navigate('/');
       },
-      next: 'basic-information',
+      next: () => {
+        return 'basic-information';
+      },
       component: <Country />,
     },
     'basic-information': {
-      prev: 'country',
-      next: 'business-information',
+      prev: () => {
+        return 'country';
+      },
+      next: () => {
+        return 'business-information';
+      },
       component: <BasicInformation />,
     },
     'business-information': {
-      prev: 'basic-information',
-      next: 'password',
+      prev: () => {
+        return 'basic-information';
+      },
+      next: () => {
+        return 'password';
+      },
       component: <BusinessInformation />,
     },
     password: {
-      prev: 'business-information',
-      next: () => null,
+      prev: () => {
+        return 'business-information';
+      },
+      next: () => {},
       component: <PasswordSetting />,
     },
   };
@@ -48,10 +63,9 @@ const Onboarding = () => {
           className="flex items-center justify-start cursor-pointer"
           onClick={(event) => {
             event.preventDefault();
-            if (typeof tabs?.[activeTab]?.prev == 'string') {
-              setActiveTab(tabs?.[activeTab]?.prev as ITab);
-            } else if (typeof tabs?.[activeTab]?.prev == 'function') {
-              tabs?.[activeTab]?.prev();
+            const returnValue = tabs?.[activeTab]?.prev();
+            if (typeof returnValue == 'string') {
+              setActiveTab(returnValue as ITab);
             }
           }}
         >
@@ -63,10 +77,9 @@ const Onboarding = () => {
       <Button
         className="lg:w-[50%] lg:py-6 rounded-3xl mx-auto bg-[#4C7F64] text-white shadow-xl shadow-[#4C7F64]/30 focus:outline-none"
         onClick={() => {
-          if (typeof tabs?.[activeTab]?.next == 'string') {
-            setActiveTab(tabs?.[activeTab]?.next as ITab);
-          } else if (typeof tabs?.[activeTab]?.next == 'function') {
-            tabs?.[activeTab]?.next();
+          const returnValue = tabs?.[activeTab]?.next();
+          if (typeof returnValue == 'string') {
+            setActiveTab(returnValue as ITab);
           }
         }}
       >

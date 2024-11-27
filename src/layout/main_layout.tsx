@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 
 const MainLayout = () => {
 	return (
-		<main>
+		<main className='bg-background'>
 			<NavbarComponent />
 			<div className="pt-7">
 				<LazyPageWrapper component={<Outlet />} />

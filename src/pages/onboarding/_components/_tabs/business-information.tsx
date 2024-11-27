@@ -47,11 +47,15 @@ const BasicInformation = () => {
         />
         <SelectInput
           items={[
-            { label: 'Hospital', value: 'Hospital' },
+            // { label: 'Hospital', value: 'Hospital' },
             { label: 'Retail', value: 'Retail' },
-            { label: 'School', value: 'School' },
+            // { label: 'School', value: 'School' },
+            { label: 'Wholesale', value: 'Wholesale' },
             { label: 'Micro Finance', value: 'Micro Finance' },
             { label: 'Micro Credit', value: 'Micro Credit' },
+            { label: 'Restaurant', value: 'Restaurant' },
+            { label: 'Savings and Loans', value: 'Savings and Loans' },
+            { label: 'Fund Management', value: 'Fund Management' },
           ]}
           label={'Business Type'}
           placeholder={'e.g. Limited Liability'}

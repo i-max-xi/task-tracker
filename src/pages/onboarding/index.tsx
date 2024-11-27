@@ -52,7 +52,9 @@ const Onboarding = () => {
       prev: () => {
         return 'business-information';
       },
-      next: () => {},
+      next: () => {
+        navigate('pricing');
+      },
       component: <PasswordSetting />,
     },
   };

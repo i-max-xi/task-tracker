@@ -10,6 +10,7 @@ import NotFound from './components/shared/not_found';
 import OrderManagement from './pages/logistics/order_management';
 import Trucking from './pages/logistics/trucking';
 import Onboarding from './pages/onboarding';
+import PricingPage from './pages/onboarding/_pages/pricing';
 const Home = lazy(() => import('./pages/home'));
 const BusinessAutomation = lazy(() => import('./pages/business_automation'));
 const FinancialServices = lazy(() => import('./pages/financial_services'));
@@ -58,7 +59,10 @@ function App() {
             />
           </Route>
 
-          <Route path="onboarding" element={<Onboarding />} />
+          <Route path="onboarding/">
+            <Route path="" element={<Onboarding />} />
+            <Route path="pricing" element={<PricingPage />} />
+          </Route>
         </Routes>
       </div>
       <Toaster position="top-right" />

@@ -94,7 +94,12 @@ export default function NavbarComponent() {
             >
               Sign up
             </CustomButton>
-            <CustomButton className="bg-[#EDF2EE] border-2 border-secondary text-primary">
+            <CustomButton
+              className="bg-[#EDF2EE] border-2 border-secondary text-primary"
+              onClick={() => {
+                window.open('https://foundry-platform.com', '_blank');
+              }}
+            >
               Log In
             </CustomButton>
           </NavbarItem>
@@ -122,7 +127,12 @@ export default function NavbarComponent() {
             >
               Sign up
             </CustomButton>
-            <CustomButton className="bg-[#EDF2EE] border-2 border-secondary text-primary">
+            <CustomButton
+              className="bg-[#EDF2EE] border-2 border-secondary text-primary"
+              onClick={() => {
+                window.open('https://foundry-platform.com', '_blank');
+              }}
+            >
               Log In
             </CustomButton>
           </div>

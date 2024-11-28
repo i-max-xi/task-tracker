@@ -23,8 +23,6 @@ const CustomFAQs = (props: ICustomProps) => {
     });
   };
 
-  console.log(activeIndex)
-
   return (
     <div>
       <hr className="border-[0.5px] border-[rgba(146,146,146,0.5)]" />

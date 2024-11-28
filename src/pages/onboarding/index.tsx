@@ -59,7 +59,7 @@ const Onboarding = () => {
     },
   };
   return (
-    <div className="lg:w-[700px] lg:h-screen lg:pt-12 lg:px-6  mx-auto font-sans flex flex-col justify-between lg:pb-12">
+    <div className="lg:w-[700px] lg:h-screen lg:pt-12 lg:px-6  mx-auto font-sans flex flex-col justify-between lg:pb-12 px-6 pt-6 h-[85vh]">
       <div className="flex flex-col gap-4">
         <div
           className="flex items-center justify-start cursor-pointer"
@@ -77,7 +77,7 @@ const Onboarding = () => {
       </div>
 
       <Button
-        className="lg:w-[50%] lg:py-6 rounded-3xl mx-auto bg-[#4C7F64] text-white shadow-xl shadow-[#4C7F64]/30 focus:outline-none"
+        className="lg:w-[50%] w-[90%] py-4 lg:py-6 rounded-3xl mx-auto bg-[#4C7F64] text-white shadow-xl shadow-[#4C7F64]/30 focus:outline-none"
         onClick={() => {
           const returnValue = tabs?.[activeTab]?.next();
           if (typeof returnValue == 'string') {

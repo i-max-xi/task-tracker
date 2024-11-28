@@ -4,29 +4,33 @@ import { cn } from '@nextui-org/react';
 
 const PricingPage = () => {
   return (
-    <div className="lg:w-[80vw] lg:mx-auto lg:pt-12 ">
+    <div className="lg:w-[80vw] lg:mx-auto lg:pt-12 p-6 ">
       <div>
-        <h4 className="font-semibold lg:text-[1.7rem]">Pricing Plan</h4>
-        <p className="text-[#717173] font-light lg:text-[0.9rem]">
+        <h4 className="font-semibold lg:text-[1.7rem] text-[1.2rem]">
+          Pricing Plan
+        </h4>
+        <p className="text-[#717173] font-light lg:text-[0.9rem] text-[0.8rem]">
           Select a pricing plan that suits your organization.
         </p>
       </div>
 
-      <div className="grid grid-cols-3 gap-6 space-y-5 md:space-y-0 lg:pt-12 ">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 space-y-5 md:space-y-0 lg:pt-12 pt-6 ">
         {allPlans.map((plan, index) => (
           <div
             key={index}
-            className="p-6 bg-[#619B7D]/10 lg:rounded-[1.8rem] cursor-pointer hover:scale-[1.01] duration-700 justify-between grid grid-rows-3"
+            className="p-6 bg-[#619B7D]/10 rounded-[1.8rem] cursor-pointer hover:scale-[1.01] duration-700 justify-between lg:grid lg:grid-rows-3"
             // flex flex-col
           >
             <div className=" ">
-              <h3 className="lg:text-[3rem] font-medium">{plan.title}</h3>
-              <p className="lg:text-[1.1rem]  font-light text-secondary-black my-2">
+              <h3 className="text-[1.5rem] lg:text-[3rem] font-medium">
+                {plan.title}
+              </h3>
+              <p className="lg:text-[1.1rem] text-[0.9rem]  font-light text-secondary-black my-2">
                 {plan.description}
               </p>
             </div>
             <div className="row-span-2 flex flex-col justify-between">
-              <div className="">
+              <div className="pt-4 lg:pt-0">
                 <h6 className="font-semibold text-[1.2rem] mb-1">Features</h6>
                 <div className="grid grid-cols-1 gap-y-2">
                   {plan?.features?.map((feature) => (
@@ -37,10 +41,10 @@ const PricingPage = () => {
                   ))}
                 </div>
               </div>
-              <div className="lg:pt-6 ">
-                <div className="lg:mb-4">
+              <div className="lg:pt-6 pt-4">
+                <div className="lg:mb-4 mb-2">
                   <p className="">
-                    <span className="lg:text-[2.7rem] font-medium">
+                    <span className="lg:text-[2.7rem] text-[1.7rem] font-medium">
                       {plan.price}
                     </span>
                     {index !== 2 && '/mo'}

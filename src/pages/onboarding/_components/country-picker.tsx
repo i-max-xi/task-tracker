@@ -18,16 +18,18 @@ const CountryPicker = () => {
   return (
     <div>
       <div
-        className="lg:w-full lg:rounded-xl bg-[#4C7F64]/5 hover:bg-[#4C7F64]/10 duration-700 lg:px-4 lg:py-3 cursor-pointer flex items-center justify-between "
+        className="lg:w-full rounded-xl bg-[#4C7F64]/5 hover:bg-[#4C7F64]/10 duration-700 px-4 py-3 cursor-pointer flex items-center justify-between "
         onClick={() => {
           onOpen();
         }}
       >
         <div>
-          <p className="text-[#717173] font-extralight lg:text-[0.6rem]">
+          <p className="text-[#717173] font-extralight lg:text-[0.6rem] text-[0.7rem]">
             Country
           </p>
-          <h4 className="lg:text-[0.95rem] lg:font-normal">{selected}</h4>
+          <h4 className="lg:text-[0.95rem] lg:font-normal text-[0.95rem]">
+            {selected}
+          </h4>
         </div>
         <Icon icon={'icon-park-outline:down'} height={20} />
       </div>
@@ -36,17 +38,17 @@ const CountryPicker = () => {
         isOpen={isOpen}
         onOpenChange={onOpenChange}
         body={
-          <div className="lg:p-8 bg-[#717173]/5">
+          <div className="lg:p-8 bg-[#717173]/5 p-4">
             <h4 className="font-semibold lg:text-[1.4rem] ">Country</h4>
 
-            <div className="relative lg:my-4">
-              <div className="absolute h-full  grid place-items-center pl-4 ">
+            <div className="relative lg:my-4 my-2">
+              <div className="absolute h-full  grid place-items-center lg:pl-4 pl-2 ">
                 <Icon icon="pajamas:search" />
               </div>
               <input
                 value={searchQuery}
                 placeholder="Search"
-                className="w-full bg-[#4C7F64]/5 focus:bg-[#4C7F64]/10 hover:bg-[#4C7F64]/10 rounded-3xl lg:pl-10 lg:py-3 lg:px-4 outline-none"
+                className="w-full bg-[#4C7F64]/5 focus:bg-[#4C7F64]/10 hover:bg-[#4C7F64]/10 rounded-3xl lg:pl-10 pl-8 lg:py-3 py-2 lg:px-4 outline-none"
                 onChange={(event) => {
                   setSearchQuery(event.currentTarget.value.trim());
                 }}
@@ -66,7 +68,7 @@ const CountryPicker = () => {
               )}
             </div>
 
-            <div className="lg:h-[60vh] overflow-scroll bg-white rounded-[1rem] lg:p-2 flex flex-col lg:gap-2 scrollbar-hide">
+            <div className="lg:h-[60vh] overflow-scroll bg-white rounded-[1rem] lg:p-2 p-1 flex flex-col lg:gap-2 scrollbar-hide h-[40vh]">
               {searchQuery !== '' ? (
                 reordered_counties.filter((country) =>
                   country.name.includes(searchQuery)
@@ -88,20 +90,20 @@ const CountryPicker = () => {
                             onClose();
                           }}
                           className={cn(
-                            'flex items-center gap-4 px-2 py-3 lg:rounded-xl cursor-pointer hover:bg-[#717173]/5',
+                            'flex items-center gap-4 px-2 py-3 rounded-xl cursor-pointer hover:bg-[#717173]/5',
                             selected == country.name && 'bg-[#4C7F64]/5'
                           )}
                         >
                           <div className="relative">
                             <Icon
                               icon={country.icon}
-                              className="lg:text-[45px]"
+                              className="lg:text-[45px] text-[30px]"
                             />
                             {selected == country.name && (
-                              <div className="size-[0.9rem] rounded-full bg-[#4C7F64] bottom-[0rem] right-0 absolute grid place-items-center">
+                              <div className="lg:size-[0.9rem] size-[0.6rem] rounded-full bg-[#4C7F64] lg:bottom-[0rem] lg:right-0 bottom-[0.1rem] right-[0.05rem] absolute grid place-items-center">
                                 <Icon
                                   icon={'fontisto:check'}
-                                  className="lg:text-[0.35rem]  text-white"
+                                  className="lg:text-[0.35rem] text-[0.2rem]  text-white"
                                 />
                               </div>
                             )}
@@ -127,17 +129,20 @@ const CountryPicker = () => {
                         onClose();
                       }}
                       className={cn(
-                        'flex items-center gap-4 px-2 py-3 lg:rounded-xl cursor-pointer hover:bg-[#717173]/5',
+                        'flex items-center gap-4 px-2 py-3 rounded-xl cursor-pointer hover:bg-[#717173]/5',
                         selected == country.name && 'bg-[#4C7F64]/5'
                       )}
                     >
                       <div className="relative">
-                        <Icon icon={country.icon} className="lg:text-[45px]" />
+                        <Icon
+                          icon={country.icon}
+                          className="lg:text-[45px] text-[30px]"
+                        />
                         {selected == country.name && (
-                          <div className="size-[0.9rem] rounded-full bg-[#4C7F64] bottom-[0rem] right-0 absolute grid place-items-center">
+                          <div className="lg:size-[0.9rem] size-[0.6rem] rounded-full bg-[#4C7F64] lg:bottom-[0rem] lg:right-0 bottom-[0.1rem] right-[0.05rem] absolute grid place-items-center">
                             <Icon
                               icon={'fontisto:check'}
-                              className="lg:text-[0.35rem]  text-white"
+                              className="lg:text-[0.35rem] text-[0.2rem]  text-white"
                             />
                           </div>
                         )}

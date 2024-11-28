@@ -13,13 +13,15 @@ const BasicInformation = () => {
   return (
     <div className="">
       <div>
-        <h4 className="font-semibold lg:text-[1.7rem]">Basic Information</h4>
-        <p className="text-[#717173] font-light lg:text-[0.9rem]">
+        <h4 className="font-semibold lg:text-[1.7rem] text-[1.2rem]">
+          Basic Information
+        </h4>
+        <p className="text-[#717173] font-light lg:text-[0.9rem] text-[0.8rem]">
           What is your phone number and email address?
         </p>
       </div>
 
-      <div className="lg:pt-6 flex flex-col gap-4">
+      <div className="lg:pt-6 pt-2 flex flex-col gap-4">
         <CustomInput
           type={'email'}
           label={'Email'}

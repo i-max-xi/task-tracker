@@ -30,7 +30,7 @@ const PhoneInput = ({
       <div className="h-14 col-span-2">
         <Autocomplete
           label="Country code"
-          className="max-w-xs"
+          className="max-w-xs "
           defaultItems={reordered_counties}
         >
           {(country) => (

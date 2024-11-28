@@ -120,7 +120,9 @@ const Pricing = () => {
                 // flex flex-col
               >
                 <div className=" ">
-                  <h3 className="text-[1.5rem] lg:text-[3rem] font-medium">{plan.title}</h3>
+                  <h3 className="text-[1.5rem] lg:text-[3rem] font-medium">
+                    {plan.title}
+                  </h3>
                   <p className="lg:text-[1.1rem] text-[0.9rem]  font-light text-secondary-black my-2">
                     {plan.description}
                   </p>
@@ -168,7 +170,7 @@ const Pricing = () => {
             ))}
           </div>
 
-          <div>
+          <div className="hidden">
             <h2 className="font-medium text-3xl lg:text-4xl mb-5 mt-10">
               Included with every Foundry account:
             </h2>
@@ -237,7 +239,7 @@ const Pricing = () => {
       {/* Processing Fees */}
       <section
         id="processing-fees"
-        className=" bg-primary p-5 md:p-10 my-10 md:py-16 w-full text-primary-white"
+        className=" bg-primary hidden p-5 md:p-10 my-10 md:py-16 w-full text-primary-white"
       >
         <div className="container">
           <h2 className="font-medium text-3xl lg:text-4xl mb-5">
@@ -258,7 +260,10 @@ const Pricing = () => {
       </section>
 
       {/* Plans by business Type */}
-      <section id="business-type" className="container py-10 pt-28 lg:pt-20">
+      <section
+        id="business-type"
+        className="container py-10 pt-28 lg:pt-20 hidden"
+      >
         <div className="flex justify-between">
           <h2 className="font-medium text-3xl md:text-4xl mb-5">
             Plans by business Type
@@ -343,37 +348,188 @@ const faqQuestion = [
   {
     header: 'How does buy now, pay later work?',
     desc: [
-      '	Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt corrupti commodi ipsa molestiae minima aliquid autem placeat voluptatem odit doloremque.',
+      <>
+        Foundry's{' '}
+        <strong className="font-semibold">Buy Now, Pay Later (BNPL)</strong>{' '}
+        solution allows businesses to access flexible payment options for their
+        transactions. Buyers can purchase goods or services immediately while
+        spreading the cost over time in manageable installments. This improves
+        cash flow for buyers while ensuring suppliers are paid promptly. Foundry
+        integrates BNPL options directly into the platform, simplifying credit
+        approval, managing repayment schedules, and providing clear insights
+        into payment statuses.
+      </>,
     ],
   },
   {
     header: 'How does Foundry compare to other business software providers?',
     desc: [
-      '	Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt corrupti commodi ipsa molestiae minima aliquid autem placeat voluptatem odit doloremque.',
+      <>
+        Foundry stands out by offering a{' '}
+        <strong className="font-semibold">
+          comprehensive ecosystem tailored for B2B interactions
+        </strong>
+        . Unlike many providers that focus on singular solutions, Foundry
+        combines tools for supply chain management, financial services,
+        regulatory compliance, and digital sales in one unified platform.
+        Foundry is designed with scalability, security, and simplicity in mind,
+        making it a standout choice for businesses of all sizes.
+      </>,
     ],
   },
   {
     header: 'What kind of resources does Foundry provide businesses?',
     desc: [
-      '	Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt corrupti commodi ipsa molestiae minima aliquid autem placeat voluptatem odit doloremque.',
+      <>
+        Foundry equips wholesale marketplaces with a robust set of tools and
+        resources designed to optimize operations and enhance B2B transactions,
+        including:
+        <ul className="list-disc pt-2 flex flex-col gap-2">
+          <li>
+            <strong className="font-semibold">
+              Supplier and Buyer Management:
+            </strong>{' '}
+            Tools to easily onboard and manage suppliers and buyers, ensuring
+            seamless interactions and communication.
+          </li>
+          <li>
+            <strong className="font-semibold">
+              Order Processing and Tracking:
+            </strong>{' '}
+            Real-time tracking and streamlined workflows for managing bulk
+            orders efficiently.
+          </li>
+          <li>
+            <strong className="font-semibold">Inventory Management:</strong>{' '}
+            Advanced systems to monitor stock levels, predict demand, and
+            prevent overstocking or shortages.
+          </li>
+          <li>
+            <strong className="font-semibold">
+              Payment and Financing Solutions:
+            </strong>{' '}
+            Integrated payment gateways, credit facilities like Buy Now, Pay
+            Later (BNPL), and support for multi-currency transactions to
+            simplify payment processes.
+          </li>
+          <li>
+            <strong className="font-semibold">Logistics Integration:</strong>{' '}
+            Tools to manage shipping, delivery tracking, and cross-border
+            logistics with minimal hassle.
+          </li>
+          <li>
+            <strong className="font-semibold">Data and Insights</strong>{' '}
+            Analytics dashboards offering deep insights into sales trends,
+            customer behavior, and supply chain performance to inform strategic
+            decisions.
+          </li>
+          <li>
+            <strong className="font-semibold">Marketing Support:</strong>{' '}
+            Features like promotional tools, custom discounts, and marketplace
+            campaigns to help suppliers reach more buyers.
+          </li>
+          <li>
+            <strong className="font-semibold">Compliance Tools:</strong>{' '}
+            Built-in solutions to ensure adherence to regional trade
+            regulations, tax compliance, and fraud detection.
+          </li>
+        </ul>
+      </>,
     ],
   },
   {
     header: 'Does Foundry have tools for complex businesses?',
     desc: [
-      '	Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt corrupti commodi ipsa molestiae minima aliquid autem placeat voluptatem odit doloremque.',
+      <>
+        Yes! Foundry is designed to handle the needs of complex businesses,
+        offering:
+        <ul className="list-disc pt-2 flex flex-col gap-2">
+          <li>
+            <strong className="font-semibold">Advanced case management:</strong>{' '}
+            for compliance and fraud detection.
+          </li>
+          <li>
+            <strong className="font-semibold">Flexible workflows:</strong> to
+            accommodate unique business processes.
+          </li>
+          <li>
+            <strong className="font-semibold">Multi-entity support:</strong> for
+            companies operating across different regions or industries.
+          </li>
+          <li>
+            <strong className="font-semibold">
+              Customizable integrations:
+            </strong>{' '}
+            s to connect with existing ERP or CRM systems, ensuring seamless
+            operations.
+          </li>
+        </ul>
+      </>,
     ],
   },
   {
     header: 'What are merchant services?',
     desc: [
-      '	Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt corrupti commodi ipsa molestiae minima aliquid autem placeat voluptatem odit doloremque.',
+      <>
+        Merchant services refer to the financial tools and technologies that the
+        Foundry provides businesses with to manage transactions. These include:
+        <ul className="list-disc pt-2 flex flex-col gap-2">
+          <li>
+            <strong className="font-semibold">
+              Payment processing solutions{' '}
+            </strong>{' '}
+            for online and offline sales.
+          </li>
+          <li>
+            <strong className="font-semibold">
+              Point-of-sale integrations
+            </strong>
+            to track inventory and sales in real-time.
+          </li>
+          <li>
+            <strong className="font-semibold">Fraud protection measures</strong>{' '}
+            to secure transactions.
+          </li>
+          <li>
+            <strong className="font-semibold">Custom invoicing systems</strong>{' '}
+            to streamline billing and collection processes. operations.
+          </li>
+        </ul>
+      </>,
     ],
   },
   {
     header: 'Does Foundry have tools for professional services businesses?',
     desc: [
-      '	Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt corrupti commodi ipsa molestiae minima aliquid autem placeat voluptatem odit doloremque.',
+      <>
+        Absolutely. Foundry offers tools specifically designed for professional
+        services, such as:
+        <ul className="list-disc pt-2 flex flex-col gap-2">
+          <li>
+            <strong className="font-semibold">
+              Time tracking and billing systems
+            </strong>{' '}
+            to manage client projects efficiently.
+          </li>
+          <li>
+            <strong className="font-semibold">
+              Customer relationship management (CRM)
+            </strong>
+            features to maintain strong client interactions.
+          </li>
+          <li>
+            <strong className="font-semibold">
+              Digital contract management
+            </strong>{' '}
+            allows businesses to securely create, sign, and store contracts.
+          </li>
+          <li>
+            <strong className="font-semibold">Financial planning tools,</strong>{' '}
+            like expense tracking and revenue forecasting, are tailored for
+            service-based workflows.
+          </li>
+        </ul>
+      </>,
     ],
   },
 ];

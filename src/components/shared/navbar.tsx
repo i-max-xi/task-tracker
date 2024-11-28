@@ -18,7 +18,7 @@ import SignUp from '../../pages/sign_up';
 export default function NavbarComponent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { isOpen, onOpenChange } = useDisclosure();
 
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -122,7 +122,9 @@ export default function NavbarComponent() {
           ))}
           <div className="flex gap-x-4">
             <CustomButton
-              onPress={() => onOpen()}
+              onPress={() => {
+                navigate('/onboarding');
+              }}
               className="bg-primary text-white"
             >
               Sign up

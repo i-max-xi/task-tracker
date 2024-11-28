@@ -1,8 +1,10 @@
 import InfoCard from '@/components/shared/info_card';
 import { CustomButton } from '@/components/shared/shared_customs';
 import { Icon } from '@iconify/react';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <main className="container">
       <section className="bg-[#F9FFF6] rounded-3xl overflow-hidden pt-16 relative">
@@ -27,7 +29,12 @@ const Home = () => {
                 system can benefit your business.
               </p>
               <div className="flex justify-center items-center">
-                <CustomButton className="font-medium">
+                <CustomButton
+                  className="font-medium"
+                  onPress={() => {
+                    navigate('/onboarding');
+                  }}
+                >
                   Get in touch{' '}
                   <Icon icon="solar:arrow-right-outline" fontSize={20} />
                 </CustomButton>
@@ -170,7 +177,9 @@ const Home = () => {
             <div key={index}>
               <img src={item.image} alt={item.name} className="w-full" />
               <h1 className="font-medium mb-1 mt-2">{item.name}</h1>
-              <p className="text-sm text-secondary-black font-light">{item.description}</p>
+              <p className="text-sm text-secondary-black font-light">
+                {item.description}
+              </p>
             </div>
           ))}
         </div>
@@ -190,7 +199,9 @@ const Home = () => {
             >
               <img src={item.image} alt={item.name} />
               <h1 className="font-medium mb-1 mt-2">{item.name}</h1>
-              <p className="text-sm text-secondary-black ">{item.description}</p>
+              <p className="text-sm text-secondary-black ">
+                {item.description}
+              </p>
             </div>
           ))}
         </div>

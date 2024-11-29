@@ -201,6 +201,11 @@ const Home = () => {
             <div
               key={index}
               className="cursor-pointer hover:scale-[1.01] duration-700"
+              onClick={() => {
+                if (item.link) {
+                  window.open(item.link, '_blank');
+                }
+              }}
             >
               <img src={item.image} alt={item.name} />
               <h1 className="font-medium mb-1 mt-2">{item.name}</h1>
@@ -298,6 +303,7 @@ const moreFoundry = [
     image: '/images/hub.webp',
     description:
       'Full-stack B2B Ecosystem for small and medium enterprises (SMEs) in Africa',
+    link: 'https://hub.foundry-platform.app/products',
   },
   {
     name: 'CornerShop',

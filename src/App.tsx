@@ -11,6 +11,8 @@ import OrderManagement from './pages/logistics/order_management';
 import Trucking from './pages/logistics/trucking';
 import Onboarding from './pages/onboarding';
 import PricingPage from './pages/onboarding/_pages/pricing';
+import BookADemo from './pages/book-a-demo';
+import FinancialServiceExpansion from './pages/financial-service';
 const Home = lazy(() => import('./pages/home'));
 const BusinessAutomation = lazy(() => import('./pages/business_automation'));
 const FinancialServices = lazy(() => import('./pages/financial_services'));
@@ -38,6 +40,10 @@ function App() {
               element={<BusinessAutomation />}
             />
             <Route path="financial-services" element={<FinancialServices />} />
+            <Route
+              path="/financial-service/:service"
+              element={<FinancialServiceExpansion />}
+            />
             <Route path="use-cases" element={<UseCases />} />
 
             <Route path="pricing" element={<Pricing />} />
@@ -58,7 +64,7 @@ function App() {
               element={<Trucking />}
             />
           </Route>
-
+          <Route path="book-a-demo" element={<BookADemo />} />
           <Route path="onboarding/">
             <Route path="" element={<Onboarding />} />
             <Route path="pricing" element={<PricingPage />} />

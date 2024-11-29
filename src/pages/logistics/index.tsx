@@ -23,7 +23,7 @@ const LogisticsAndSupply = () => {
 				</CustomButton>
 			</section>
 
-			<section className="border-3 border-white rounded-xl py-20 relative ">
+			<section className="bg-primary/10  rounded-xl py-20 relative ">
 				<div className="absolute z-50 -bottom-32 md:-bottom-12 left-1/2 transform -translate-x-1/2 w-[85%] lg:w-[90%] mx-auto bg-white rounded-3xl p-4 grid md:grid-cols-auto-fill-220 lg:grid-cols-auto-fill-250 xl:grid-cols-auto-fill-300 gap-2">
 					{[
 						{

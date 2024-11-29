@@ -35,7 +35,7 @@ const UseCases = () => {
 		<main>
 			{/* hero */}
 			<section ref={ref} className="container">
-				<div className="border-3 border-white rounded-xl relative overflow-hidden flex flex-col">
+				<div className="bg-primary/10 rounded-xl relative overflow-hidden flex flex-col">
 					<div className="lg:px-28 md:pt-16 md:pb-28 px-5 flex flex-col-reverse md:flex-col">
 						<div className="lg:max-w-lg md:max-w-xs">
 							<h1 className="font-medium text-3xl md:text-4xl">

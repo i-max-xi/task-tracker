@@ -22,7 +22,7 @@ const BusinessAutomation = () => {
 				</CustomButton>
 			</section>
 
-			<section className="border-3 border-white rounded-xl flex justify-center items-center pt-20 md:pt-16 mt-[4.5rem] lg:mt-10 relative">
+			<section className="bg-primary/10 rounded-xl flex justify-center items-center pt-20 md:pt-16 mt-[4.5rem] lg:mt-10 relative">
 				<div className="absolute -top-24 md:-top-10 left-1/2 transform z-50 -translate-x-1/2 w-[70%] lg:w-[50%] mx-auto bg-white rounded-3xl p-4 grid grid-cols-auto-fill-150 gap-2">
 					{[
 						{

@@ -1,61 +1,16 @@
 import InfoCard from '@/components/shared/info_card';
-import CustomModal from '@/components/shared/modal';
 import { CustomButton } from '@/components/shared/shared_customs';
+import useScrollToSection from '@/hooks/useScrollToSection';
 import { Icon } from '@iconify/react/dist/iconify.js';
-import {
-  Image,
-  Input,
-  Select,
-  SelectItem,
-  useDisclosure,
-} from '@nextui-org/react';
-import { z } from 'zod';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import axios from 'axios';
-import { variables } from '@/utils/helper';
-const bookAFormSchema = z.object({
-  business_name: z.string().min(1, { message: 'Business name is required' }),
-  industry: z.string().min(1, { message: 'Industry is required' }),
-  contact_person: z.string().min(1, { message: 'Contact person is required' }),
-  email: z
-    .string()
-    .email({ message: 'Please enter a valid email address' })
-    .min(1, { message: 'Email is required' }),
-  phone_number: z.string().min(1, { message: 'Phone number is required' }),
-  country: z.string().min(1, { message: 'Country is required' }),
-  services: z.string().min(1, { message: 'Services is requrired' }),
-  additional_information: z.string().optional(),
-});
+import { Image } from '@nextui-org/react';
+import { useNavigate } from 'react-router-dom';
 
 const FinancialServices = () => {
-  const {
-    formState: { errors },
-    handleSubmit,
-    register,
-    getValues,
-    watch,
-  } = useForm<z.infer<typeof bookAFormSchema>>({
-    resolver: zodResolver(bookAFormSchema),
-  });
-  const bookDemoModal = useDisclosure();
-  watch();
-  const onSubmit = async (data: z.infer<typeof bookAFormSchema>) => {
-    try {
-      const response = await axios({
-        url: `${variables.base_url}/landing/create/prospect`,
-        data,
-        method: 'post',
-        withCredentials: true,
-      });
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const navigate = useNavigate();
+  useScrollToSection();
   return (
     <main className="container md:pt-5">
-      <section className="border-3 border-white rounded-xl px-5 lg:px-28 md:pt-16 pb-28 md:mt-[4.5rem] mt-6 relative">
+      <section className=" bg-primary/10 rounded-xl px-5 lg:px-28 md:pt-16 pb-28 md:mt-[4.5rem] mt-6 relative">
         <div className="absolute -bottom-24 lg:-bottom-10 left-1/2 transform -translate-x-1/2 w-[60%] md:w-[42%] mx-auto bg-white rounded-3xl p-4 grid grid-cols-auto-fill-200 gap-3">
           {[
             {
@@ -83,13 +38,19 @@ const FinancialServices = () => {
           </h1>
 
           <div className="flex items-center flex-col lg:flex-row gap-2">
-            <CustomButton className="bg-primary text-white font-medium px-5 lg:w-fit ">
+            <CustomButton
+              className="bg-primary text-white font-medium px-5 lg:w-fit "
+              onClick={() => {
+                navigate('#explore');
+              }}
+            >
               Explore <Icon icon="solar:arrow-right-outline" fontSize={20} />
             </CustomButton>
             <CustomButton
               className="bg-transparent border-primary border-2 text-primary font-medium px-5 lg:w-fit "
               onPress={() => {
-                bookDemoModal.onOpen();
+                // bookDemoModal.onOpen();
+                navigate('/book-a-demo');
               }}
             >
               Book a Demo{' '}
@@ -116,7 +77,47 @@ const FinancialServices = () => {
           }}
         />
       </section>
-
+      <section className=" lg:mt-28 mt-36 lg:pt-10 ">
+        <div className="lg:mb-4 mb-3">
+          <h2 className="font-medium text-3xl md:text-4xl mb-5">
+            Built for Modern Financial Services
+          </h2>
+          <p className=" lg:text-[1rem] text-[0.89rem] font-normal text-[#717173]">
+            Our platform combines cutting-edge technology with robust security
+            features to deliver a comprehensive financial solution that drives
+            efficiency and growth.
+          </p>
+        </div>
+        <div className=" w-full  rounded-xl grid lg:grid-cols-2 grid-cols-1 gap-x-8 gap-y-6">
+          <div className="grid grid-cols-1 gap-y-6 ">
+            {modern_financial_services?.map((item) => (
+              <div
+                key={item.title}
+                className="grid grid-cols-12 border-[1px] rounded-xl lg:p-4 px-6 py-2 lg:gap-4 gap-6 cursor-pointer hover:shadow-md duration-1000 "
+              >
+                <div className="flex items-start justify-center">
+                  <div className="bg-primary/10 grid place-items-center lg:p-3 p-2 rounded-xl">
+                    <Icon icon={item.icon} className="text-primary" />
+                  </div>
+                </div>
+                <div className="col-span-11 flex flex-col gap-y-1">
+                  <h4 className="font-semibold lg:text-[1.1rem] text-[0.95rem] text-primary">
+                    {item.title}
+                  </h4>
+                  <p className="font-extralight lg:text-[0.89rem] text-[0.79rem] text-[#717173]">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="order-first lg:order-2">
+            <div className="lg:w-[90%] w-full mx-auto h-full rounded-xl bg-primary/10 grid place-items-center">
+              <Image src="/images/financial-services.svg" className='w-[70%] mx-auto' />
+            </div>
+          </div>
+        </div>
+      </section>
       <section className="py-10 pt-28 lg:pt-20">
         <div className="flex justify-between">
           <h2 className="font-medium text-3xl md:text-4xl mb-5">
@@ -129,91 +130,19 @@ const FinancialServices = () => {
               key={index}
               title={item.title}
               description={item.description}
+              showLearnMore
+              onLearnMoreClick={() => {
+                navigate(
+                  `/financial-service/${item.title
+                    .toLocaleLowerCase()
+                    .split(' ')
+                    .join('-')}`
+                );
+              }}
             />
           ))}
         </div>
       </section>
-
-      <CustomModal
-        isOpen={bookDemoModal.isOpen}
-        onOpenChange={bookDemoModal.onOpenChange}
-        body={
-          <div className="p-4">
-            <div>
-              <h4 className="lg:text-[1.3rem] font-semibold">Book a Demo</h4>
-              <p className="font-light text-[0.85rem] ">
-                Fill out the form below and our team will get in touch with you
-                shortly.
-              </p>
-            </div>
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="pt-4 space-y-3 lg:space-y-5"
-            >
-              {data.map((item) => {
-                const fieldName = item.name as keyof z.infer<
-                  typeof bookAFormSchema
-                >;
-                switch (item.type) {
-                  case 'text':
-                    return (
-                      <div>
-                        <Input
-                          value={getValues()[fieldName]}
-                          className="w-full"
-                          type={'text'}
-                          label={item.label}
-                          placeholder={item.placeHolder}
-                          {...register(fieldName)}
-                        />
-                        <span className="text-red-400 text-xs">
-                          {errors?.[fieldName]?.message}
-                        </span>
-                      </div>
-                    );
-
-                  case 'select':
-                    return (
-                      <div>
-                        <Select
-                          items={item.options}
-                          label={item.label}
-                          value={getValues()[fieldName]}
-                          placeholder={item.placeHolder}
-                          onSelectionChange={(selected) =>
-                            register(fieldName).onChange({
-                              target: { value: selected },
-                            })
-                          }
-                          {...register(fieldName)}
-                          selectionMode={item?.multiple ? 'multiple' : 'single'}
-                        >
-                          {(item) => (
-                            <SelectItem key={item.value}>
-                              {item.label}
-                            </SelectItem>
-                          )}
-                        </Select>
-                        <span className="text-red-400 text-xs">
-                          {errors?.[fieldName]?.message}
-                        </span>
-                      </div>
-                    );
-                }
-              })}
-
-              <div className="w-full pt-2">
-                <CustomButton
-                  type="submit"
-                  className=" bg-primary text-white w-full text-base"
-                >
-                  Submit
-                </CustomButton>
-              </div>
-            </form>
-          </div>
-        }
-      />
     </main>
   );
 };
@@ -252,80 +181,30 @@ const moreConstant = [
       'Expand banking access with our agent network platform, connecting underserved areas to essential financial services through local intermediaries',
   },
 ];
-const data = [
+
+const modern_financial_services = [
   {
-    label: 'Business name',
-    name: 'business_name',
-    type: 'text',
-    placeHolder: 'e.g. Cepodek',
+    icon: 'uil:user',
+    title: 'Seamless Onboarding and Loan Origination',
+    description:
+      'Enable fast account openings and smooth loan applications with document upload functionality for a quick, paperless experience.',
   },
   {
-    placeHolder: 'e.g. Banking',
-    label: 'Industry',
-    name: 'industry',
-    type: 'select',
-    options: [
-      'Banking',
-      'Insurance',
-      'Microfinance',
-      'Credit Union',
-      'Investment Banking',
-      'Asset Management',
-      'Fund Management',
-      'Payment Services',
-      'Digital Banking',
-      'Fintech',
-      'Lending',
-      'Micro Credit',
-      'Savings and Loans',
-      'Other Financial Services',
-    ].map((e) => ({ label: e, value: e })),
+    icon: 'lucide:gauge',
+    title: 'Efficient, Scalable Operations',
+    description:
+      'Achieve real-time transaction processing, automated compliance checks, and a scalable infrastructure designed for flexible growth.',
   },
   {
-    label: 'Contact Person',
-    name: 'contact_person',
-    type: 'text',
-    placeHolder: 'e.g. Nana Gyamfi',
+    icon: 'mdi:protected-outline',
+    title: 'Enhanced Security and Global Accessibility',
+    description:
+      'Leverage advanced fraud detection, multi-currency support, and secure global transactions to support international operations.',
   },
   {
-    label: 'Email',
-    name: 'email',
-    type: 'text',
-    placeHolder: 'e.g. papa@example.com',
-  },
-  {
-    label: 'Phone Number',
-    name: 'phone_number',
-    type: 'text',
-    placeHolder: 'e.g. 02039298437',
-  },
-  {
-    label: 'Country',
-    name: 'country',
-    type: 'select',
-    options: ['Ghana', 'Nigeria', 'Senegal', 'Mali'].map((e) => ({
-      label: e,
-      value: e,
-    })),
-    placeHolder: 'e.g. Ghana',
-  },
-  {
-    label: 'Services',
-    name: 'services',
-    type: 'select',
-    options: [
-      'Financial Services',
-      'Business Automation',
-      'Foundry Hub',
-      'Logistics & Supply Chain',
-    ].map((e) => ({ label: e, value: e })),
-    multiple: true,
-    placeHolder: 'e.g. Financial Services',
-  },
-  {
-    label: 'Additional Information',
-    name: 'additional_information',
-    type: 'text',
-    placeHolder: 'e.g. Can we schedule a meeting',
+    icon: 'hugeicons:connect',
+    title: 'Comprehensive Workflow Management',
+    description:
+      'Streamline investment processing, digital workflows, quick approvals, and back-office operations for efficient service delivery.',
   },
 ];

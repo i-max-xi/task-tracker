@@ -177,8 +177,8 @@ const menuItems = [
   },
   {
     // link: '/products',
-    title: 'Products',
-    link: 'https://hub.foundry-platform.app/products',
+    title: 'Marketplace',
+    link: 'https://hub.foundry-platform.app',
   },
   {
     link: '/use-cases',

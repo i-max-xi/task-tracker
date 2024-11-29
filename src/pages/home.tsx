@@ -303,7 +303,7 @@ const moreFoundry = [
     image: '/images/hub.webp',
     description:
       'Full-stack B2B Ecosystem for small and medium enterprises (SMEs) in Africa',
-    link: 'https://hub.foundry-platform.app/products',
+    link: 'https://hub.foundry-platform.app',
   },
   {
     name: 'CornerShop',

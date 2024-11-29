@@ -218,16 +218,13 @@ const Pricing = () => {
             )}
           </div>
           <div className="grid grid-cols-auto-fill-300 gap-5 space-y-5 md:space-y-0">
-            {Array.from({ length: 8 }).map((_, index) => (
+            {mix_and_match.map((item) => (
               <div
-                key={index}
+                key={item.title}
                 className="p-5 bg-[#619B7D]/10 rounded-xl flex flex-col"
               >
-                <h3 className="text-lg font-medium">HR & Payroll</h3>
-                <p className="text-sm text-secondary-black my-2">
-                  Streamline the allocation of resources and time slots,
-                  optimising bookings to minimise gaps and maximise utilisation
-                </p>
+                <h3 className="text-lg font-medium">{item.title}</h3>
+                <p className="text-sm text-secondary-black my-2">{item.desc}</p>
 
                 <p className="text-sm text-secondary-black mt-5">Starting at</p>
               </div>
@@ -577,6 +574,51 @@ const navLinks = [
 // 		price: 'Custom',
 // 	},
 // ];
+
+const mix_and_match = [
+  {
+    title: 'Foundry POS ',
+    desc: 'Easily start selling in person, online, by phone, or on the go — no training needed.',
+    startingPrice: '',
+    tags: [],
+  },
+  {
+    title: 'Payroll ',
+    desc: 'Manage hours, expedite employee payments, and automate tax filings all from one platform to simplify payroll.',
+    startingPrice: '',
+    tags: [],
+  },
+  {
+    title: 'Online Store',
+    desc: 'Effortlessly sell, accept bookings, and showcase your services online. Expand your reach to customers on Instagram and Facebook.',
+    startingPrice: '',
+    tags: [],
+  },
+  {
+    title: 'Invoices',
+    desc: 'Create and send digital invoices and estimates, accept payments, issue reminders, and track payment statuses.',
+    startingPrice: '',
+    tags: [],
+  },
+  {
+    title: 'Loans',
+    desc: 'Qualify for loans selling using Foundry. Receive funds as quickly as the next business day.',
+    startingPrice: '',
+    tags: [],
+  },
+  {
+    title: 'Loyalty',
+    desc: 'Encourage repeat business with a simple and effective rewards program.',
+    startingPrice: '',
+    tags: [],
+  },
+  {
+    title: 'Marketing suite ',
+    desc: 'Reach out to customers directly with updates on sales, new arrivals, coupons, and more to keep your business top of mind.',
+    startingPrice: '',
+    tags: [],
+  },
+];
 const allPlans = [
   {
     title: 'Basic',

@@ -377,7 +377,15 @@ const FinancialServiceExpansion = () => {
           </p>
         </div>
         {current?.['video-link'] && (
-          <CustomButton className="bg-primary text-white font-medium px-5 ">
+          <CustomButton
+            className="bg-primary text-white font-medium px-5 "
+            onClick={() => {
+              window.open(
+                'https://www.youtube.com/watch?v=PpPci8gGRoE',
+                '_blank'
+              );
+            }}
+          >
             <Icon icon="si:video-line" fontSize={20} />
             Watch Video
           </CustomButton>
@@ -419,7 +427,7 @@ const InfoCard = ({
 }) => {
   return (
     <div className="bg-secondary-light rounded-2xl p-4 lg:px-6 lg:py-6 w-full flex flex-col justify-between gap-6 hover:scale-[1.02] duration-700 hover:shadow-lg cursor-pointer">
-      <div className="flex flex-col gap-y-3 bg-primary w-fit p-2 rounded-md">
+      <div className="flex flex-col gap-y-3 bg-primary/80 w-fit p-2 rounded-md">
         <Icon icon={icon} fontSize={24} className="text-white" />
       </div>
 

@@ -58,7 +58,7 @@ const BookADemo = () => {
         >
           <Icon icon={'fluent:arrow-left-16-filled'} height={25} />
         </div>
-        <h4 className="lg:text-[1.6rem] text-[1.2rem] font-semibold">
+        <h4 className="lg:text-[1.6rem] text-[1.2rem] font-semibold" >
           Book a Demo
         </h4>
         <p className="font-light lg:text-[0.95rem] text-[0.85rem] text-[#717173] ">

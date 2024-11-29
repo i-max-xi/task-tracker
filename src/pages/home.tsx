@@ -125,7 +125,12 @@ const Home = () => {
             </div>
 
             <div className="absolute bottom-10 left-10">
-              <CustomButton className="font-medium">
+              <CustomButton
+                className="font-medium"
+                onPress={() => {
+                  navigate('/book-a-demo');
+                }}
+              >
                 Book Demo{' '}
                 <Icon icon="solar:arrow-right-outline" fontSize={20} />
               </CustomButton>

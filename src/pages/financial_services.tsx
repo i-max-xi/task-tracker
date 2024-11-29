@@ -1,3 +1,4 @@
+import InfoSectionWithGoals from '@/components/reusable/info_section_with_goals';
 import InfoCard from '@/components/shared/info_card';
 import { CustomButton } from '@/components/shared/shared_customs';
 import useScrollToSection from '@/hooks/useScrollToSection';
@@ -77,7 +78,7 @@ const FinancialServices = () => {
           }}
         />
       </section>
-      <section className=" lg:mt-28 mt-36 lg:pt-10 ">
+      {/* <section className=" lg:mt-28 mt-36 lg:pt-10 ">
         <div className="lg:mb-4 mb-3">
           <h2 className="font-medium text-3xl md:text-4xl mb-5">
             Built for Modern Financial Services
@@ -117,8 +118,21 @@ const FinancialServices = () => {
             </div>
           </div>
         </div>
+      </section> */}
+      <section className=" lg:mt-28 mt-36 lg:pt-10 ">
+        <InfoSectionWithGoals
+          sectionTitle="Built for Modern Financial Services"
+          sectionDescription="Our platform combines cutting-edge technology with robust security features to deliver a comprehensive financial solution that drives efficiency and growth."
+          goalsTitle="Your Business Goals"
+          solutionTitle="How to Solve It with Foundry"
+          goals={modern_financial_services?.map((item) => ({
+            title: item.title,
+            desc: [item.description],
+          }))}
+        />
       </section>
-      <section className="py-10 pt-28 lg:pt-20">
+
+      <section className="py-10 pt-28 lg:pt-20" id="explore">
         <div className="flex justify-between">
           <h2 className="font-medium text-3xl md:text-4xl mb-5">
             More from Financial Service

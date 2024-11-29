@@ -66,20 +66,31 @@ export default function NavbarComponent() {
             <p className="font-bold text-inherit uppercase">foundry</p>
           </NavbarBrand>
           <div className="flex w-[87%] gap-x-5 justify-center items-center">
-            {menuItems.map((item, index) => (
-              <NavbarItem key={`${item}-${index}`}>
-                <Link
-                  to={item.link + (item.title === 'Use Cases' ? '?v=all' : '')}
-                  // onClick={() => setIsMenuOpen(false)}
-                  className={cn(
-                    'w-full text-sm text-[#808080]',
-                    pathname.includes(item.link) && 'text-[#1A1A1A]'
-                  )}
-                >
-                  {item.title}
-                </Link>
-              </NavbarItem>
-            ))}
+            {menuItems.map(
+              (item, index) => (
+                // item.link ? (
+                <NavbarItem key={`${item}-${index}`}>
+                  <Link
+                    to={
+                      item.link + (item.title === 'Use Cases' ? '?v=all' : '')
+                    }
+                    // onClick={() => setIsMenuOpen(false)}
+                    className={cn(
+                      'w-full text-sm text-[#808080]',
+                      pathname.includes(item?.link as string) &&
+                        'text-[#1A1A1A]'
+                    )}
+                  >
+                    {item.title}
+                  </Link>
+                </NavbarItem>
+              )
+              // ) : (
+              //   <li className="cursor-pointer  text-[0.9rem] h-full text-[#808080]">
+              //     {item.title}
+              //   </li>
+              // )
+            )}
           </div>
         </NavbarContent>
 
@@ -108,16 +119,23 @@ export default function NavbarComponent() {
         <NavbarMenu className="bg-white">
           {menuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
+              {/* {item?.link ? ( */}
               <Link
                 to={item.link}
                 onClick={() => setIsMenuOpen(false)}
                 className={cn(
                   'w-full text-sm text-[#808080]',
-                  pathname.includes(item.link) && 'text-[#1A1A1A]'
+                  pathname.includes(item.link as string) && 'text-[#1A1A1A]'
                 )}
               >
                 {item.title}
               </Link>
+              {/* // ) : (
+              //   <p className="cursor-pointer  text-sm text-[#808080] ">
+              //     {' '}
+              //     {item.title}
+              //   </p>
+              // )} */}
             </NavbarMenuItem>
           ))}
           <div className="flex gap-x-4">
@@ -158,8 +176,9 @@ const menuItems = [
     title: 'Logistics & Supply Chain',
   },
   {
-    link: '/products',
+    // link: '/products',
     title: 'Products',
+    link: 'https://hub.foundry-platform.app/products',
   },
   {
     link: '/use-cases',

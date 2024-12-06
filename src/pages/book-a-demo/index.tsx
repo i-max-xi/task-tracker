@@ -47,7 +47,7 @@ const BookADemo = () => {
       }),
     {
       onSuccess: () => {
-        toast.success("Details submitted successfully");
+        toast.success("Details submitted successfully, we will be in touch!");
         reset();
       },
       onError: (error: any) => {

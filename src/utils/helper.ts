@@ -1,3 +1,4 @@
+
 const environment = import.meta.env;
 
 export const blockInvalidChar = (e: React.KeyboardEvent<HTMLInputElement>) =>
@@ -5,5 +6,6 @@ export const blockInvalidChar = (e: React.KeyboardEvent<HTMLInputElement>) =>
 
 export const variables = {
   base_url: environment.VITE_API_BASE_URL,
-  environment: environment.VITE_ENV
+  environment: environment.VITE_ENV,
+  redirectUrl: environment.VITE_REDIRECT_URL
 };

@@ -14,7 +14,7 @@ import toast from "react-hot-toast";
 import { useMutation } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react"; // Import useState
-import { useNavigate } from "react-router-dom";
+import { showCustomToast } from "@/components/shared/custom-toast";
 
 const PricingPage = () => {
   const {
@@ -30,7 +30,6 @@ const PricingPage = () => {
   } = useSelector((state: RootState) => state.subscriber);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   // State to track which plan's button is loading
   const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
@@ -43,12 +42,15 @@ const PricingPage = () => {
       }),
     {
       onSuccess: () => {
-        toast.success(
-          "Details submitted for verification!. you will receive an email"
-        );
         dispatch(resetSubscriber());
         setLoadingPlan(null);
-        navigate("/");
+        showCustomToast(
+          "Details submitted for verification! Redirecting to Foundry Platform...",
+          "Okay",
+          () => {
+            window.location.href = variables.redirectUrl;
+          }
+        );
       },
       onError: (error: any) => {
         console.error("Error creating subscriber:", error);
@@ -74,6 +76,13 @@ const PricingPage = () => {
       nature_of_business,
       password,
     });
+    // showCustomToast(
+    //   "Details submitted for verification! Redirecting to Foundry Platform...",
+    //   "Okay",
+    //   () => {
+    //     window.location.href = variables.redirectUrl;
+    //   }
+    // );
   };
 
   return (

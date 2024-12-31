@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import globalSlice from './features/global';
+import subscriberSlice from './features/subscriber';
 
 const persistConfig = {
 	key: 'Foundry Eat',
@@ -12,6 +13,7 @@ const persistConfig = {
 
 const combinedReducers = combineReducers({
 	global: globalSlice.reducer,
+	subscriber: subscriberSlice.reducer 
 });
 
 const persistedReducer = persistReducer(persistConfig, combinedReducers);

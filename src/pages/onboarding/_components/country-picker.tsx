@@ -1,13 +1,52 @@
-import CustomModal from '@/components/shared/modal';
-import { Icon } from '@iconify/react/dist/iconify.js';
-import { cn, useDisclosure } from '@nextui-org/react';
-import { countries } from '../_utils/misc';
-import { useState } from 'react';
+import CustomModal from "@/components/shared/modal";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import { cn, useDisclosure } from "@nextui-org/react";
+import { countries } from "../_utils/misc";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateSubscriberState } from "@/store/features/subscriber";
+import { RootState } from "@/store/store";
 
 const CountryPicker = () => {
   const { onOpenChange, onClose, isOpen, onOpen } = useDisclosure();
-  const [selected, setSelected] = useState<string>('Ghana');
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const { country, country_code } = useSelector(
+    (state: RootState) => state.subscriber
+  );
+
+  const [selected, setSelected] = useState<string>(country || "Ghana");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log({
+      country,
+      country_code,
+    });
+    if (country !== "") {
+      dispatch(
+        updateSubscriberState({
+          safe: true,
+        })
+      );
+    }
+  }, []);
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onSelectCountry = (country: any) => {
+    console.log("fired", country);
+    dispatch(
+      updateSubscriberState({
+        country: country.name,
+        country_code: country.phoneCode,
+        safe: true,
+      })
+    );
+    setSelected(country.name);
+
+    setSearchQuery("");
+    onClose();
+  };
 
   const reordered_counties = [
     ...countries.filter((country) => country.name === selected),
@@ -31,7 +70,7 @@ const CountryPicker = () => {
             {selected}
           </h4>
         </div>
-        <Icon icon={'icon-park-outline:down'} height={20} />
+        <Icon icon={"icon-park-outline:down"} height={20} />
       </div>
       <CustomModal
         size="md"
@@ -53,11 +92,12 @@ const CountryPicker = () => {
                   setSearchQuery(event.currentTarget.value.trim());
                 }}
               />
-              {searchQuery !== '' && (
+              {searchQuery !== "" && (
                 <div
                   className="absolute h-full right-0 top-0  grid place-items-center pr-4 "
+                  // eslint-disable-next-line @typescript-eslint/no-unused-vars
                   onClick={(_) => {
-                    setSearchQuery('');
+                    setSearchQuery("");
                   }}
                 >
                   <Icon
@@ -69,7 +109,7 @@ const CountryPicker = () => {
             </div>
 
             <div className="lg:h-[60vh] overflow-scroll bg-white rounded-[1rem] lg:p-2 p-1 flex flex-col lg:gap-2 scrollbar-hide h-[40vh]">
-              {searchQuery !== '' ? (
+              {searchQuery !== "" ? (
                 reordered_counties.filter((country) =>
                   country.name.includes(searchQuery)
                 ).length != 0 ? (
@@ -85,13 +125,11 @@ const CountryPicker = () => {
                           onClick={(event) => {
                             event.preventDefault();
                             event.stopPropagation();
-                            setSelected(country.name);
-                            setSearchQuery('');
-                            onClose();
+                            onSelectCountry(country);
                           }}
                           className={cn(
-                            'flex items-center gap-4 px-2 py-3 rounded-xl cursor-pointer hover:bg-[#717173]/5',
-                            selected == country.name && 'bg-[#4C7F64]/5'
+                            "flex items-center gap-4 px-2 py-3 rounded-xl cursor-pointer hover:bg-[#717173]/5",
+                            selected == country.name && "bg-[#4C7F64]/5"
                           )}
                         >
                           <div className="relative">
@@ -102,7 +140,7 @@ const CountryPicker = () => {
                             {selected == country.name && (
                               <div className="lg:size-[0.9rem] size-[0.6rem] rounded-full bg-[#4C7F64] lg:bottom-[0rem] lg:right-0 bottom-[0.1rem] right-[0.05rem] absolute grid place-items-center">
                                 <Icon
-                                  icon={'fontisto:check'}
+                                  icon={"fontisto:check"}
                                   className="lg:text-[0.35rem] text-[0.2rem]  text-white"
                                 />
                               </div>
@@ -125,12 +163,12 @@ const CountryPicker = () => {
                         event.preventDefault();
                         event.stopPropagation();
                         setSelected(country.name);
-                        setSearchQuery('');
+                        setSearchQuery("");
                         onClose();
                       }}
                       className={cn(
-                        'flex items-center gap-4 px-2 py-3 rounded-xl cursor-pointer hover:bg-[#717173]/5',
-                        selected == country.name && 'bg-[#4C7F64]/5'
+                        "flex items-center gap-4 px-2 py-3 rounded-xl cursor-pointer hover:bg-[#717173]/5",
+                        selected == country.name && "bg-[#4C7F64]/5"
                       )}
                     >
                       <div className="relative">
@@ -141,7 +179,7 @@ const CountryPicker = () => {
                         {selected == country.name && (
                           <div className="lg:size-[0.9rem] size-[0.6rem] rounded-full bg-[#4C7F64] lg:bottom-[0rem] lg:right-0 bottom-[0.1rem] right-[0.05rem] absolute grid place-items-center">
                             <Icon
-                              icon={'fontisto:check'}
+                              icon={"fontisto:check"}
                               className="lg:text-[0.35rem] text-[0.2rem]  text-white"
                             />
                           </div>

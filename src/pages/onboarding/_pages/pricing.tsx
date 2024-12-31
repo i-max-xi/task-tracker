@@ -1,8 +1,90 @@
-import { CustomButton } from '@/components/shared/shared_customs';
-import { Icon } from '@iconify/react/dist/iconify.js';
-import { cn } from '@nextui-org/react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { CustomButton } from "@/components/shared/shared_customs";
+import { mutateFn } from "@/services/mutation.api";
+import {
+  resetSubscriber,
+  SubscriberStateType,
+  updateSubscriberState,
+} from "@/store/features/subscriber";
+import { RootState } from "@/store/store";
+import { variables } from "@/utils/helper";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import { cn } from "@nextui-org/react";
+import toast from "react-hot-toast";
+import { useMutation } from "react-query";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react"; // Import useState
+import { showCustomToast } from "@/components/shared/custom-toast";
 
 const PricingPage = () => {
+  const {
+    customer_name,
+    country,
+    email,
+    mobile,
+    business_location,
+    business_type,
+    nature_of_business,
+    password,
+    country_code,
+  } = useSelector((state: RootState) => state.subscriber);
+
+  const dispatch = useDispatch();
+
+  // State to track which plan's button is loading
+  const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
+
+  const { mutate: mutateSubscriber } = useMutation(
+    (newData: SubscriberStateType) =>
+      mutateFn({
+        url: `${variables.base_url}/create/subscriber`,
+        data: newData,
+      }),
+    {
+      onSuccess: () => {
+        dispatch(resetSubscriber());
+        setLoadingPlan(null);
+        showCustomToast(
+          "Details submitted for verification! Redirecting to Foundry Platform...",
+          "Okay",
+          () => {
+            window.location.href = variables.redirectUrl;
+          }
+        );
+      },
+      onError: (error: any) => {
+        console.error("Error creating subscriber:", error);
+        toast.error("Details were not submitted, please try again");
+        setLoadingPlan(null); // Reset loading state after error
+      },
+    }
+  );
+
+  const onSubmit = async (plan: string) => {
+    dispatch(updateSubscriberState({ subscription_plan: plan }));
+
+    setLoadingPlan(plan); // Set loading state for the clicked plan
+    mutateSubscriber({
+      customer_name,
+      country,
+      email,
+      mobile: country_code + mobile,
+      subscription_plan:
+        plan === "Free Tier" ? "free_tier" : plan.toLocaleLowerCase(),
+      business_location,
+      business_type,
+      nature_of_business,
+      password,
+    });
+    // showCustomToast(
+    //   "Details submitted for verification! Redirecting to Foundry Platform...",
+    //   "Okay",
+    //   () => {
+    //     window.location.href = variables.redirectUrl;
+    //   }
+    // );
+  };
+
   return (
     <div className="lg:w-[80vw] lg:mx-auto lg:pt-12 p-6 ">
       <div>
@@ -14,12 +96,11 @@ const PricingPage = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 space-y-5 md:space-y-0 lg:pt-12 pt-6 ">
+      <div className="grid grid-cols-2 lg:grid-cols-2 gap-6 space-y-5 md:space-y-0 lg:pt-12 pt-6 ">
         {allPlans.map((plan, index) => (
           <div
             key={index}
             className="p-6 bg-[#619B7D]/10 rounded-[1.8rem] cursor-pointer hover:scale-[1.01] duration-700 justify-between lg:grid lg:grid-rows-3"
-            // flex flex-col
           >
             <div className=" ">
               <h3 className="text-[1.5rem] lg:text-[3rem] font-medium">
@@ -35,34 +116,32 @@ const PricingPage = () => {
                 <div className="grid grid-cols-1 gap-y-2">
                   {plan?.features?.map((feature) => (
                     <div className="flex items-center gap-2">
-                      <Icon icon={'uil:check'} className="text-primary" />
+                      <Icon icon={"uil:check"} className="text-primary" />
                       <p className="font-light">{feature}</p>
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="lg:pt-6 pt-4">
-                <div className="lg:mb-4 mb-2">
+              <div className=" pt-2">
+                <div className="">
                   <p className="">
                     <span className="lg:text-[2.7rem] text-[1.7rem] font-medium">
                       {plan.price}
                     </span>
-                    {index !== 2 && '/mo'}
-                    {/* <br />
-                    <p className="text-sm text-secondary-black ">
-                      + processing fees
-                    </p> */}
+                    {index !== 2 && "/mo"}
                   </p>
                 </div>
 
                 <CustomButton
                   className={cn(
-                    'bg-primary text-white font-medium w-full mt-auto lg:py-6 lg:text-[1.1rem]',
-                    index === 2 &&
-                      'border-2 border-primary bg-transparent text-primary'
+                    "bg-primary text-white font-medium w-full mt-auto lg:py-6 lg:text-[1.1rem]",
+                    index === 3 &&
+                      "border-2 border-primary bg-transparent text-primary"
                   )}
+                  isLoading={loadingPlan === plan.title} // Show loading only for the clicked button
+                  onClick={() => onSubmit(plan.title)}
                 >
-                  {index == 2 ? 'Contact Sales' : 'Subscribe'}
+                  {index == 3 ? "Contact Sales" : "Subscribe"}
                 </CustomButton>
               </div>
             </div>
@@ -72,53 +151,69 @@ const PricingPage = () => {
     </div>
   );
 };
+
 const allPlans = [
   {
-    title: 'Basic',
+    title: "Free Tier",
     description:
-      'Expand your reach and sell anywhere: in-store, online, over the phone, or while on the move.',
-    price: '₵650',
+      "Experience all the essential tools and features your business needs to thrive completely FREE for the first month. Enjoy full access to manage sales, inventory, and finances seamlessly.",
+    price: "₵0",
     features: [
-      'Virtual Terminal (POS)',
-      'Generate Invoices',
-      'Manage Inventory',
-      'Basic Accounting and Book keeping',
-      'Manage Cash flow',
-      'Single Location ',
+      "Virtual Terminal (POS)",
+      "Generate Invoices",
+      "Manage Inventory",
+      "Basic Accounting and Book keeping",
+      "Manage Cash flow",
+      "Single Location ",
     ],
   },
   {
-    title: 'Plus',
+    title: "Basic",
     description:
-      ' Unlock advanced features tailored to meet the unique needs of restaurants, retail shops, and appointment-based businesses. Enjoy the flexibility to upgrade your plan whenever it suits you and cancel at any time without hassle.',
-    price: '₵1,500',
+      "Expand your reach and sell anywhere: in-store, online, over the phone, or while on the move.",
+    price: "₵650",
     features: [
-      'Advance invoicing',
-      'Generate Purchase Orders',
-      'Inventory analytics',
-      'Live phone support',
-      'Online Checkout',
-      'Single Location',
-      '1 Warehouse',
-      'Barcode generation and printing',
+      "Virtual Terminal (POS)",
+      "Generate Invoices",
+      "Manage Inventory",
+      "Basic Accounting and Book keeping",
+      "Manage Cash flow",
+      "Single Location ",
     ],
   },
   {
-    title: 'Advanced',
+    title: "Plus",
     description:
-      'Create a tailored plan designed to address the unique complexities of your operations. Custom processing rates may be offered based on eligibility.',
-    price: 'Custom',
+      " Unlock advanced features tailored to meet the unique needs of restaurants, retail shops, and appointment-based businesses. Enjoy the flexibility to upgrade your plan whenever it suits you and cancel at any time without hassle.",
+    price: "₵1,500",
     features: [
-      'Staff Payroll',
-      'Advanced Accounting',
-      'Warehouse Management',
-      '24/7 support',
-      'Integrations',
-      'Online Ordering',
-      'Multi Store ',
-      'Business Account ',
-      'Business Analytics ',
+      "Advance invoicing",
+      "Generate Purchase Orders",
+      "Inventory analytics",
+      "Live phone support",
+      "Online Checkout",
+      "Single Location",
+      "1 Warehouse",
+      "Barcode generation and printing",
+    ],
+  },
+  {
+    title: "Advanced",
+    description:
+      "Create a tailored plan designed to address the unique complexities of your operations. Custom processing rates may be offered based on eligibility.",
+    price: "Custom",
+    features: [
+      "Staff Payroll",
+      "Advanced Accounting",
+      "Warehouse Management",
+      "24/7 support",
+      "Integrations",
+      "Online Ordering",
+      "Multi Store ",
+      "Business Account ",
+      "Business Analytics ",
     ],
   },
 ];
+
 export default PricingPage;

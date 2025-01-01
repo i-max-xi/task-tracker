@@ -14,7 +14,6 @@ import toast from "react-hot-toast";
 import { useMutation } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react"; // Import useState
-import { showCustomToast } from "@/components/shared/custom-toast";
 
 const PricingPage = () => {
   const {
@@ -44,13 +43,17 @@ const PricingPage = () => {
       onSuccess: () => {
         dispatch(resetSubscriber());
         setLoadingPlan(null);
-        showCustomToast(
-          "Details submitted for verification! Redirecting to Foundry Platform...",
-          "Okay",
-          () => {
-            window.location.href = variables.redirectUrl;
-          }
+        toast.success(
+          "Details submitted for verification! Redirecting to Foundry Platform..."
         );
+        // showCustomToast(
+        //   "Details submitted for verification! Redirecting to Foundry Platform...",
+        //   "Okay",
+        //   () => {
+        //     window.location.href = variables.redirectUrl;
+        //   }
+        // );
+        window.location.href = variables.redirectUrl;
       },
       onError: (error: any) => {
         console.error("Error creating subscriber:", error);

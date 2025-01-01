@@ -99,7 +99,7 @@ const PricingPage = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-2 gap-6 space-y-5 md:space-y-0 lg:pt-12 pt-6 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 gap-y-5 lg:pt-12 pt-6 ">
         {allPlans.map((plan, index) => (
           <div
             key={index}

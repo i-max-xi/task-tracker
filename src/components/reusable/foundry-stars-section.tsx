@@ -185,7 +185,7 @@ const FoundrySection = () => {
   const prevSlide = () => setIndex((prev) => (prev > 0 ? prev - 1 : prev));
 
   return (
-    <section className="my-12 lg:mb-20  mx-auto flex flex-col overflow-hidden">
+    <section className="py-10 lg:mb-20  mx-auto flex flex-col overflow-hidden">
       <h1 className="text-3xl md:text-5xl font-semibold mb-2 lg:mb-4 text-center font-roboto w-full">
         Empowering Businesses for Growth{" "}
       </h1>

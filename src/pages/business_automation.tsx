@@ -1,6 +1,5 @@
 import InfoCard from "@/components/shared/info_card";
 import { CustomButton } from "@/components/shared/shared_customs";
-import { Icon } from "@iconify/react/dist/iconify.js";
 import { Image } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
 
@@ -19,12 +18,20 @@ const BusinessAutomation = () => {
           From efficient transactions to automated workflows, we streamline your
           business operations for seamless growth.
         </p>
-        <CustomButton
-          onPress={() => navigate("/onboarding")}
-          className="bg-primary text-white font-medium px-5 "
-        >
-          Get Started <Icon icon="solar:arrow-right-outline" fontSize={20} />
-        </CustomButton>
+        <div className="flex gap-4 items-center justify-center">
+          <CustomButton
+            onPress={() => navigate("/onboarding")}
+            className="bg-primary text-white font-medium px-5 "
+          >
+            Get Started
+          </CustomButton>
+          <CustomButton
+            className="bg-[#EDF2EE] border-2 border-secondary text-primary"
+            onPress={() => navigate("/book-a-demo")}
+          >
+            Book Demo
+          </CustomButton>
+        </div>
       </section>
 
       <section className="bg-primary/10 rounded-xl flex justify-center items-center pt-20 md:pt-16 mt-[4.5rem] lg:mt-10 relative">

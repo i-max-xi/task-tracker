@@ -5,69 +5,41 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 
 const Footer = () => {
   return (
-    <footer id="footer" className="bg-primary text-primary-white relative">
-      <img
-        src="/images/logo_clustered.png"
-        alt="clustered_logos"
-        className="absolute right-0 top-0"
-      />
-      <div className="container py-10 md:py-16 lg:grid grid-cols-[0.4fr,1fr,0.4fr] gap-x-5">
-        <div className="space-y-3 flex flex-col items-center lg:items-start">
-          <img
-            src="/icons/logo_white.svg"
-            alt="logo-white"
-            className="w-[2.3rem]"
-          />
-          <p className="text-sm">Empowering African Businesses for Growth</p>
-          <div className="flex items-center gap-x-3">
-            {socials.map((item, index) => (
-              <a
-                key={index}
-                href={item.href}
-                target="_blank"
-                className="hover:opacity-80"
-              >
-                <Icon icon={item.icon} fontSize={30} />
-              </a>
-            ))}
-          </div>
-        </div>
-        <div className="hidden lg:grid grid-cols-3">
-          {FOOTER_ITEMS.map((item, index) => (
-            <div key={index}>
-              <h1 className="text-primary-white mb-2 text-[17px] font-medium">
-                {item.header}
-              </h1>
-              <div className="h-[0.2rem] w-[15%] mb-2 bg-gray-200/20 rounded-full" />
-              <div className="flex gap-y-1 flex-col">
-                {item.links.map((itx, idx) => (
-                  <Link className="hover:opacity-80" key={idx} to={itx.href}>
-                    {itx.title}
-                  </Link>
-                ))}
-              </div>
+    <footer id="footer" className="bg-black text-primary-white relative  ">
+      <div className="container py-10">
+        {" "}
+        <img src="/icons/logo.png" alt="logo-white" className="w-[2.3rem]" />
+      </div>
+      <div className="min-h-[12rem]"></div>
+      <section className="hidden">
+        <div className="container py-10 md:py-16 lg:grid grid-cols-[0.4fr,1fr,0.4fr] gap-x-5 ">
+          <div className="space-y-3 flex flex-col items-center lg:items-start">
+            <img
+              src="/icons/logo.png"
+              alt="logo-white"
+              className="w-[2.3rem]"
+            />
+            <p className="text-sm">Empowering African Businesses for Growth</p>
+            <div className="flex items-center gap-x-3">
+              {socials.map((item, index) => (
+                <a
+                  key={index}
+                  href={item.href}
+                  target="_blank"
+                  className="hover:opacity-80"
+                >
+                  <Icon icon={item.icon} fontSize={30} />
+                </a>
+              ))}
             </div>
-          ))}
-        </div>
-        {/* mobile */}
-        <div className="lg:hidden block mt-5">
-          <Accordion
-            itemClasses={{
-              base: "py-0 w-full",
-              title: "font-normal text-medium text-primary-white",
-              trigger:
-                " py-0 data-[hover=true]:bg-default-100  rounded-lg h-10 flex items-center",
-              indicator: "text-medium",
-              content: "text-small  text-white",
-            }}
-            isCompact
-          >
+          </div>
+          <div className="hidden lg:grid grid-cols-3">
             {FOOTER_ITEMS.map((item, index) => (
-              <AccordionItem
-                key={index}
-                aria-label="Accordion 1"
-                title={item.header}
-              >
+              <div key={index}>
+                <h1 className="text-primary-white mb-2 text-[17px] font-medium">
+                  {item.header}
+                </h1>
+                <div className="h-[0.2rem] w-[15%] mb-2 bg-gray-200/20 rounded-full" />
                 <div className="flex gap-y-1 flex-col">
                   {item.links.map((itx, idx) => (
                     <Link className="hover:opacity-80" key={idx} to={itx.href}>
@@ -75,45 +47,81 @@ const Footer = () => {
                     </Link>
                   ))}
                 </div>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-
-        <div className="mt-3">
-          <h1 className="text-primary-white mb-2 text-[17px] font-medium">
-            Download Mobile App
-          </h1>
-          <div className="h-[0.2rem] w-[15%] mb-2 bg-gray-200/20 rounded-full" />
-          <div className="flex items-center gap-x-4">
-            {[
-              {
-                title: "App Store",
-                icon: "/icons/Apple.svg",
-                link: "https://apps.apple.com/gh/developer/access89/id1781630972",
-              },
-              {
-                title: "Google play",
-                icon: "/icons/playstore.svg",
-                link: "https://play.google.com/store/apps/developer?id=access+89&hl=en_US",
-              },
-            ].map((item, index) => (
-              <a href={item.link} target="_blank" key={index}>
-                <CustomButton className="flex gap-x-3 bg-secondary p-8 rounded-md items-center ">
-                  <img src={item.icon} alt={item.title} />
-                  <div className="flex flex-col items-start">
-                    <p className="text-[#EBEBEB] text-sm">Download on the</p>
-                    <p className="text-lg text-white">{item.title} </p>
-                  </div>
-                </CustomButton>
-              </a>
+              </div>
             ))}
           </div>
+          {/* mobile */}
+          <div className="lg:hidden block mt-5">
+            <Accordion
+              itemClasses={{
+                base: "py-0 w-full",
+                title: "font-normal text-medium text-primary-white",
+                trigger:
+                  " py-0 data-[hover=true]:bg-default-100  rounded-lg h-10 flex items-center",
+                indicator: "text-medium",
+                content: "text-small  text-white",
+              }}
+              isCompact
+            >
+              {FOOTER_ITEMS.map((item, index) => (
+                <AccordionItem
+                  key={index}
+                  aria-label="Accordion 1"
+                  title={item.header}
+                >
+                  <div className="flex gap-y-1 flex-col">
+                    {item.links.map((itx, idx) => (
+                      <Link
+                        className="hover:opacity-80"
+                        key={idx}
+                        to={itx.href}
+                      >
+                        {itx.title}
+                      </Link>
+                    ))}
+                  </div>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+
+          <div className="mt-3">
+            <h1 className="text-primary-white mb-2 text-[17px] font-medium">
+              Download Mobile App
+            </h1>
+            <div className="h-[0.2rem] w-[15%] mb-2 bg-gray-200/20 rounded-full" />
+            <div className="flex items-center gap-x-4">
+              {[
+                {
+                  title: "App Store",
+                  icon: "/icons/Apple.svg",
+                  link: "https://apps.apple.com/gh/developer/access89/id1781630972",
+                },
+                {
+                  title: "Google play",
+                  icon: "/icons/playstore.svg",
+                  link: "https://play.google.com/store/apps/developer?id=access+89&hl=en_US",
+                },
+              ].map((item, index) => (
+                <a href={item.link} target="_blank" key={index}>
+                  <CustomButton className="flex gap-x-3 bg-secondary p-8 rounded-md items-center ">
+                    <img src={item.icon} alt={item.title} />
+                    <div className="flex flex-col items-start">
+                      <p className="text-[#EBEBEB] text-sm">Download on the</p>
+                      <p className="text-lg text-white">{item.title} </p>
+                    </div>
+                  </CustomButton>
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="w-full h-[1px] bg-black/40" />
-      <div className="py-3 text-center text-xs">
-        Foundry © {new Date().getFullYear()}. All Rights Reserved
+      </section>
+
+      <div className="w-full h-[1px] bg-black/40  " />
+      <div className="py-5 text-center text-xs text-[#E4E5E7]/50 align-bottom border-t border-[#ACACAC]/50">
+        Copyright © {new Date().getFullYear()} Unity Savings & Services Ltd. All
+        rights reserved. Trademarks belong to their respective owners.
       </div>
     </footer>
   );

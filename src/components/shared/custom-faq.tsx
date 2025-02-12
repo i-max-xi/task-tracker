@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { Icon } from '@iconify/react/dist/iconify.js';
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 interface ICustomProps {
   options: {
@@ -25,7 +25,6 @@ const CustomFAQs = (props: ICustomProps) => {
 
   return (
     <div>
-      <hr className="border-[0.5px] border-[rgba(146,146,146,0.5)]" />
       {props.options.map((a, index) => {
         const active = activeIndex.includes(a.header);
 
@@ -33,7 +32,7 @@ const CustomFAQs = (props: ICustomProps) => {
           <div
             key={index}
             className={`${
-              active ? 'bg-secondary/20' : 'bg-transparent'
+              active ? "bg-transparent" : "bg-transparent"
             } w-full `}
           >
             <div
@@ -42,14 +41,20 @@ const CustomFAQs = (props: ICustomProps) => {
               }}
               className={`flex justify-between ${
                 active
-                  ? 'bg-secondary text-white'
-                  : 'bg-transparent hover:bg-gray-50/5 py-3'
-              } py-2 md:px-5 px-1 hover:cursor-pointer w-full`}
+                  ? "bg-[#FBB603]/80 text-white"
+                  : "bg-transparent hover:bg-gray-50/5 py-3"
+              } py-2  px-1 hover:cursor-pointer w-full`}
             >
-              <p className="text-[17px]">{a.header}</p>
+              <p
+                className={`text-[17px] ${
+                  active ? "text-white" : "text-black"
+                }  font-semibold`}
+              >
+                {a.header}
+              </p>
               <button>
                 <Icon
-                  icon={`${active ? 'ic:sharp-minus' : 'ic:baseline-plus'}`}
+                  icon={`${active ? "ic:sharp-minus" : "ic:baseline-plus"}`}
                   fontSize={23}
                   className="duration-300 transition-all "
                 />
@@ -61,7 +66,7 @@ const CustomFAQs = (props: ICustomProps) => {
                   {a.desc.map((b, index) => (
                     <motion.div
                       initial={{ height: 0 }}
-                      animate={{ height: 'auto' }}
+                      animate={{ height: "auto" }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3 }}
                       key={index}
@@ -73,7 +78,7 @@ const CustomFAQs = (props: ICustomProps) => {
                 </motion.div>
               )}
             </AnimatePresence>
-            <hr className="border-[0.5px] border-[rgba(146,146,146,0.5)]" />
+            <hr className="border-[0.3px] border-[#ACACAC]/50" />
           </div>
         );
       })}

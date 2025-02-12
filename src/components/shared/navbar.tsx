@@ -69,8 +69,9 @@ export default function NavbarComponent() {
                   <NavbarItem
                     className={cn(
                       "flex gap-1 items-center cursor-pointer text-sm text-[#0E121B] hover:text-[#0E121B]",
-                      pathname.includes(item.title.toLowerCase()) &&
-                        "text-[#0E121B] font-medium"
+                      pathname.toLowerCase()?.split("/")[1] ===
+                        item.title.toLowerCase()?.split("/")[1] &&
+                        "text-[#FBB603] font-medium"
                     )}
                   >
                     {item.title} <Icon icon="majesticons:chevron-down" />
@@ -90,8 +91,8 @@ export default function NavbarComponent() {
                   to={item?.link as string}
                   className={cn(
                     "w-full text-sm text-[#0E121B]",
-                    pathname.includes(item?.link as string) &&
-                      "text-[#0E121B] font-medium"
+                    pathname?.split("/")[1] === item?.link?.split("/")[1] &&
+                      "text-[#FBB603] font-medium"
                   )}
                 >
                   {item.title}
@@ -116,8 +117,8 @@ export default function NavbarComponent() {
                 onClick={() => setIsMenuOpen(false)}
                 className={cn(
                   "w-full text-sm text-[#0E121B]",
-                  pathname.includes(item?.link as string) &&
-                    "text-[#0E121B] font-medium"
+                  pathname?.split("/")[1] === item?.link?.split("/")[1] &&
+                    "text-[#FBB603] font-medium"
                 )}
               >
                 {item.title}
@@ -149,8 +150,7 @@ const menuItems = [
     title: "Help Center",
   },
   {
-    link: "",
-    // link: "/about-us",
+    link: "/about-us",
     title: "About Us",
   },
 ];

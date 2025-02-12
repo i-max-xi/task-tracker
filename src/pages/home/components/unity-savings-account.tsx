@@ -24,7 +24,7 @@ export const UnitySavingsAccount = () => {
           <div
             key={index}
             className={`font-semibold text-xs md:text-base  flex flex-col justify-center items-center text-center ${
-              index !== 0 ? "  md:pl-6" : ""
+              index !== 0 ? "border-l border-[#929292]/50 md:pl-6" : ""
             }`}
           >
             <p className="flex whitespace-nowrap">{info.title}</p>
@@ -33,7 +33,7 @@ export const UnitySavingsAccount = () => {
         ))}
       </div>
 
-      <div className="border-l border-r py-6 px-10 border-gray-300 flex flex-col justify-center items-center text-center">
+      <div className=" py-6 px-10 border-gray-300 flex flex-col justify-center items-center text-center">
         <CustomButton className="bg-[#FBB603] text-white rounded-full font-semibold ">
           Learn More
         </CustomButton>

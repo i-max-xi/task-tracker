@@ -22,7 +22,7 @@ const Home = () => {
         <InfoSection />
       </div>
 
-      <div className="mx-auto container flex flex-col gap-10 md:gap-20 my-8 md:my-16 bg-white">
+      <div className="mx-auto container flex flex-col gap-16 md:gap-20 my-8 md:my-16 bg-white">
         <UnitySavingsAccount />
 
         <FAQ />

@@ -33,11 +33,11 @@ const InfoCardWithIcon = ({ title, description, icon, link }: IInfoCard) => {
         <div></div>
         <Link
           to={link}
-          className="mt-4 flex w-fit rounded-full border border-[#4C7F64]/50 p-2"
+          className="mt-4 flex w-fit rounded-full border border-[#212121] p-2"
         >
           <Icon
             icon="prime:arrow-right"
-            className="text-[#4C7F64]"
+            className="text-[#212121]"
             fontSize={24}
           />
         </Link>{" "}

@@ -103,10 +103,7 @@ export const InfoSection = () => {
           style={{ width: `${(infos.length / cardsToShow) * 100}%` }}
         >
           {infos.map((info, index) => (
-            <motion.div
-              key={index}
-              className="lg:w-[20%] flex-shrink-0 px-2 py-5"
-            >
+            <motion.div key={index} className="w-[20%] flex-shrink-0 px-2 py-5">
               <InfoCardWithIcon {...info} />
             </motion.div>
           ))}

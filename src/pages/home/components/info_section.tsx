@@ -103,7 +103,10 @@ export const InfoSection = () => {
           style={{ width: `${(infos.length / cardsToShow) * 100}%` }}
         >
           {infos.map((info, index) => (
-            <motion.div key={index} className="w-[20%] flex-shrink-0 px-2 py-5">
+            <motion.div
+              key={index}
+              className="md:w-[30%] lg:w-[20%] flex-shrink-0 lg:px-2 py-5"
+            >
               <InfoCardWithIcon {...info} />
             </motion.div>
           ))}
@@ -118,28 +121,35 @@ const infos = [
     title: "Susu savings",
     description:
       "Personal banking services that make managing your finances hassle and stress-free.",
-    icon: "mdi:bank-outline", // Represents savings and banking
+    // icon: "mdi:bank-outline", // Represents savings and banking
+    img: "/images/piggy_bank.jpg",
     link: "",
   },
   {
     title: "Investment",
     description:
       "Versatile banking solutions to streamline operations, drive growth, and transform your business.",
-    icon: "mdi:chart-line-variant", // Represents financial growth and investments
+    // icon: "mdi:chart-line-variant", // Represents financial growth and investments
+    img: "/images/chart.jpg",
+
     link: "",
   },
   {
     title: "Travel for greener pastures",
     description:
       "A lending solution for the provisioning of loans facilitated through our digital platform.",
-    icon: "material-symbols-light:travel", // Represents travel and new opportunities
+    // icon: "material-symbols-light:travel", // Represents travel and new opportunities
+    img: "/images/plane.jpg",
+
     link: "",
   },
   {
     title: "Real Estate financing",
     description:
       "Flexible financing options to support your real estate investment and property acquisition.",
-    icon: "mdi:home-outline", // Represents housing and real estate financing
+    // icon: "mdi:home-outline", // Represents housing and real estate financing
+    img: "/images/city.jpg",
+
     link: "",
   },
 ];

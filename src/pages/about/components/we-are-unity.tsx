@@ -23,18 +23,18 @@ const infos = [
     title: "Nature of Business",
     description:
       "Unity Savings and Services aims at serving the people with partly Islamic support to the Muslims, the needy as well as non-Muslims. We adopt profit sharing policy as the sole core mandate.",
-    img_src: "/images/cash.jpg",
+    img_src: "/images/cash.webp",
   },
   {
     title: "Vision Statement",
     description:
       "To be the people’s backbone, harnessing the transformational power of job creation and all related businesses to improve lives.",
-    img_src: "/images/magnifier.jpg",
+    img_src: "/images/magnifier.webp",
   },
   {
     title: "Mission Statement",
     description:
       "Providing profitable and diversified for a sustained job creation, Islamic financial supports and legal services to the benefit of all especially the less privilege.",
-    img_src: "/images/hands.jpg",
+    img_src: "/images/hands.webp",
   },
 ];

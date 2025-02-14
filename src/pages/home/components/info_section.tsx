@@ -122,7 +122,7 @@ const infos = [
     description:
       "Personal banking services that make managing your finances hassle and stress-free.",
     // icon: "mdi:bank-outline", // Represents savings and banking
-    img: "/images/piggy_bank.jpg",
+    img: "/images/piggy_bank.webp",
     link: "",
   },
   {
@@ -130,7 +130,7 @@ const infos = [
     description:
       "Versatile banking solutions to streamline operations, drive growth, and transform your business.",
     // icon: "mdi:chart-line-variant", // Represents financial growth and investments
-    img: "/images/chart.jpg",
+    img: "/images/chart.webp",
 
     link: "",
   },
@@ -139,7 +139,7 @@ const infos = [
     description:
       "A lending solution for the provisioning of loans facilitated through our digital platform.",
     // icon: "material-symbols-light:travel", // Represents travel and new opportunities
-    img: "/images/plane.jpg",
+    img: "/images/plane.webp",
 
     link: "",
   },
@@ -148,7 +148,7 @@ const infos = [
     description:
       "Flexible financing options to support your real estate investment and property acquisition.",
     // icon: "mdi:home-outline", // Represents housing and real estate financing
-    img: "/images/city.jpg",
+    img: "/images/city.webp",
 
     link: "",
   },

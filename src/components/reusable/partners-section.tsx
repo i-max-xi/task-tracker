@@ -2,17 +2,17 @@ import { motion } from "framer-motion";
 
 const PartnersSection = () => {
   const partners = [
-    { name: "Shield", logo: "/images/brands/sheild 1.png" },
-    { name: "Google", logo: "/images/brands/gog 1.png" },
-    { name: "CCT", logo: "/images/brands/cct (1) 1.png" },
-    { name: "Cepodek", logo: "/images/brands/CEPODEK ENTERPRISE.png" },
-    { name: "Ubuntu", logo: "/images/brands/2ubuntu (1) 1.png" },
-    { name: "Microsoft", logo: "/images/brands/micro 1.png" },
-    { name: "AZ Enterprise", logo: "/images/brands/AZ ENTERPRISE.png" },
-    { name: "Wema", logo: "/images/brands/wema-Logo-PNG (1) 1.png" },
-    { name: "Ras Mawuli", logo: "/images/brands/Ras Ma (1) 1.png" },
-    { name: "Fatum", logo: "/images/brands/Banking Partnership (2) 1.png" },
-    { name: "Cal bank", logo: "/images/brands/cal (1) 1.png" },
+    { name: "Shield", logo: "/images/brands/sheild 1.webp" },
+    { name: "Google", logo: "/images/brands/gog 1.webp" },
+    { name: "CCT", logo: "/images/brands/cct (1) 1.webp" },
+    { name: "Cepodek", logo: "/images/brands/CEPODEK ENTERPRISE.webp" },
+    { name: "Ubuntu", logo: "/images/brands/2ubuntu (1) 1.webp" },
+    { name: "Microsoft", logo: "/images/brands/micro 1.webp" },
+    { name: "AZ Enterprise", logo: "/images/brands/AZ ENTERPRISE.webp" },
+    { name: "Wema", logo: "/images/brands/wema-Logo-PNG (1) 1.webp" },
+    { name: "Ras Mawuli", logo: "/images/brands/Ras Ma (1) 1.webp" },
+    { name: "Fatum", logo: "/images/brands/Banking Partnership (2) 1.webp" },
+    { name: "Cal bank", logo: "/images/brands/cal (1) 1.webp" },
   ];
 
   // Duplicate logos for seamless scrolling

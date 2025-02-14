@@ -40,12 +40,12 @@ const Home = () => {
             {[
               {
                 title: "App Store",
-                icon: "/icons/app-store.png",
+                icon: "/icons/app-store.webp",
                 link: "",
               },
               {
                 title: "Google play",
-                icon: "/icons/play-store.png",
+                icon: "/icons/play-store.webp",
                 link: "",
               },
             ].map((item, index) => (

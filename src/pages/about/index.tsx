@@ -1,4 +1,4 @@
-import { BoardOfDirectors } from "./components/board-of-directors";
+// import { BoardOfDirectors } from "./components/board-of-directors";
 import { WeareunitySection } from "./components/we-are-unity";
 
 const About = () => {
@@ -10,9 +10,9 @@ const About = () => {
       <div className="mt-5 md:mt-10 mx-auto container">
         <WeareunitySection />
       </div>
-      <div className="mt-10 md:mt-20 container mx-auto">
+      {/* <div className="mt-10 md:mt-20 container mx-auto">
         <BoardOfDirectors />
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -36,33 +36,27 @@ const Home = () => {
           <p className="font-normal text-base md:text-lg text-[#FBBB16]">
             Download our Mobile Banking app
           </p>
-          <div className="">
-            {/* <h1 className="text-primary-white mb-2 text-[17px] font-medium">
-              Download Mobile App
-            </h1> */}
-            <div className="h-[0.2rem] w-[15%] mb-2 bg-gray-200/20 rounded-full" />
-            <div className="flex items-center gap-x-4">
-              {[
-                {
-                  title: "App Store",
-                  icon: "/icons/app-store.png",
-                  link: "",
-                },
-                {
-                  title: "Google play",
-                  icon: "/icons/play-store.png",
-                  link: "",
-                },
-              ].map((item, index) => (
-                <a href={item.link} target="_blank" key={index}>
-                  <img
-                    src={item.icon}
-                    alt={item.title}
-                    className="md:w-[10rem] "
-                  />
-                </a>
-              ))}
-            </div>
+          <div className="flex items-center gap-x-4">
+            {[
+              {
+                title: "App Store",
+                icon: "/icons/app-store.png",
+                link: "",
+              },
+              {
+                title: "Google play",
+                icon: "/icons/play-store.png",
+                link: "",
+              },
+            ].map((item, index) => (
+              <a href={item.link} target="_blank" key={index}>
+                <img
+                  src={item.icon}
+                  alt={item.title}
+                  className="md:w-[10rem] "
+                />
+              </a>
+            ))}
           </div>
         </motion.div>
       </div>

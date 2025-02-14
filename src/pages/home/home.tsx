@@ -11,7 +11,7 @@ const Home = () => {
       <div className="lg:h-[90vh] pb-10 lg:pb-5  overflow-hidden flex flex-col lg:flex-row justify-between container items-center">
         <div className="my-auto flex-1 ">
           <motion.img
-            src="/images/mobile.png"
+            src="/images/mobile.webp"
             loading="eager"
             className="w-full h-full object-cover "
             initial={{ opacity: 0, scale: 1.1 }}

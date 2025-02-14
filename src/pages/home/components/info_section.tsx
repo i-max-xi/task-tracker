@@ -105,7 +105,7 @@ export const InfoSection = () => {
           {infos.map((info, index) => (
             <motion.div
               key={index}
-              className="md:w-[30%] lg:w-[20%] flex-shrink-0 lg:px-2 py-5"
+              className="w-[90vw] md:w-[30%] lg:w-[20%] flex-shrink-0 lg:px-2 py-5"
             >
               <InfoCardWithIcon {...info} />
             </motion.div>

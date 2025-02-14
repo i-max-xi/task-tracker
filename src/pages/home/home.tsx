@@ -26,7 +26,7 @@ const Home = () => {
           // transition={{ duration: 0.5 }}
           className="flex flex-col gap-2  flex-1 justify-center items-center text-center lg:justify-start lg:items-start lg:text-left"
         >
-          <h1 className="text-[#010101] text-2xl md:text-5xl font-extrabold">
+          <h1 className="text-[#010101] text-2xl md:text-5xl font-extrabold lg:w-[85%]">
             Save Towards the Goals You Believe In With Susu Savings.
           </h1>
           <p className="text-[#575757] font-normal text-base md:text-lg">

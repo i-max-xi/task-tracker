@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import TaskList from "@/components/ui/TaskList";
 import TaskForm from "@/components/ui/TaskForm";
 import SearchBar from "@/components/shared/searchbar";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 const Home: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
@@ -23,9 +24,9 @@ const Home: React.FC = () => {
         onClick={() => setShowForm(true)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className="fixed bottom-8 right-8 bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600"
+        className="flex items-center justify-center fixed bottom-8 right-8 bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600"
       >
-        Add Task
+        <Icon icon="ic:twotone-plus" /> Add Task
       </motion.button>
 
       {showForm && (

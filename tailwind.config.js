@@ -22,13 +22,6 @@ module.exports = {
       },
     },
     extend: {
-      gridTemplateColumns: {
-        'auto-fill-200': 'repeat(auto-fill, minmax(200px, 1fr))',
-        'auto-fill-300': 'repeat(auto-fill, minmax(300px, 1fr))',
-        'auto-fill-220': 'repeat(auto-fill, minmax(220px, 1fr))',
-        'auto-fill-250': 'repeat(auto-fill, minmax(250px, 1fr))',
-        'auto-fill-150': 'repeat(auto-fill, minmax(150px, 1fr))',
-      },
       fontFamily: {
         roboto: 'Roboto',
         sans: 'DM Sans',
@@ -39,15 +32,7 @@ module.exports = {
       },
 
       colors: {
-        // primary: '#4C7F64',
-        primary: 'rgb(45 97 69)',
-        secondary: '#619B7D',
-        'secondary-light': '#619b7d1a',
-        'primary-white': '#F5F5F5',
-        'primary-black': '#1A1A1A',
-        'secondary-black': '#575757',
-        background: '#ffffff',
-        // background: '#EDF2EE',
+       
       },
     },
   },

@@ -15,8 +15,6 @@ const TaskList: React.FC = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-semibold mb-4">Task List</h2>
-
       {/* If no tasks */}
       {filteredTasks.length === 0 ? (
         <p className="text-gray-500">No tasks available.</p>

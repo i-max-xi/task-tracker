@@ -1,15 +1,20 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import TaskList from "@/components/shared/ui/TaskList";
-import TaskForm from "@/components/shared/ui/TaskForm";
+import TaskList from "@/components/ui/TaskList";
+import TaskForm from "@/components/ui/TaskForm";
+import SearchBar from "@/components/shared/searchbar";
 
 const Home: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
 
   return (
     <>
-      <div className=" mx-auto bg-white w-full">
+      <div className="py-5 md:py-10 mx-auto bg-white w-full flex justify-center items-center flex-col">
         <h1 className="text-3xl font-bold text-center mb-4">Task Tracker</h1>
+
+        <div className="w-[60%] mx-auto">
+          <SearchBar />
+        </div>
 
         <TaskList />
       </div>

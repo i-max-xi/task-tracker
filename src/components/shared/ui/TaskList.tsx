@@ -30,11 +30,9 @@ const TaskList: React.FC = () => {
         </div>
       )}
 
-      {/* Task Form (for editing) */}
+      {/* Task Form (as a modal) */}
       {editTask && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <TaskForm editTask={editTask} onClose={() => setEditTask(null)} />
-        </div>
+        <TaskForm editTask={editTask} onClose={() => setEditTask(null)} />
       )}
     </div>
   );

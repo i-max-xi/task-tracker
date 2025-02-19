@@ -1,5 +1,14 @@
 import { motion } from "framer-motion";
 import { Task, useTaskContext } from "@/context/task-context";
+import { Icon } from "@iconify/react";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Checkbox,
+} from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 
 type TaskItemProps = {
   task: Task;
@@ -19,35 +28,59 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onEdit }) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
       layout
-      className="p-4 border rounded-lg shadow-md bg-white"
     >
-      <h3 className="text-lg font-semibold">{task.title}</h3>
-      <p className="text-gray-600">{task.description}</p>
-      <span
-        className={`inline-block px-2 py-1 rounded text-sm font-medium ${
-          task.priority === "High"
-            ? "bg-red-500 text-white"
-            : task.priority === "Medium"
-            ? "bg-yellow-500 text-white"
-            : "bg-green-500 text-white"
-        }`}
-      >
-        {task.priority}
-      </span>
-      <div className="mt-3 flex gap-2">
-        <button
-          onClick={() => onEdit(task)}
-          className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
-        >
-          Edit
-        </button>
-        <button
-          onClick={handleDelete}
-          className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
-        >
-          Delete
-        </button>
-      </div>
+      <Card shadow="sm" className="p-4">
+        <CardHeader className="flex gap-1 items-center">
+          <Checkbox defaultSelected />
+          <h3 className="text-lg font-semibold flex items-center gap-2">
+            {task.title}
+          </h3>
+        </CardHeader>
+        <CardBody>
+          <p className="text-gray-600">{task.description}</p>
+        </CardBody>
+        <CardFooter className="flex justify-between items-center">
+          <p
+            className={`p-2 rounded-md text-sm font-medium flex items-center ${
+              task.priority === "High"
+                ? "bg-red-500 text-white"
+                : task.priority === "Medium"
+                ? "bg-yellow-500 text-black"
+                : "bg-green-500 text-white"
+            }`}
+          >
+            <Icon
+              icon={
+                task.priority === "High"
+                  ? "mdi:alert-circle"
+                  : task.priority === "Medium"
+                  ? "mdi:alert"
+                  : "mdi:check-circle"
+              }
+              className="mr-1"
+            />
+            {task.priority}
+          </p>
+          <div className="flex gap-2">
+            <Button
+              color="primary"
+              variant="light"
+              size="sm"
+              onClick={() => onEdit(task)}
+            >
+              <Icon icon="mdi:pencil" className="mr-1" /> Edit
+            </Button>
+            <Button
+              color="danger"
+              variant="light"
+              size="sm"
+              onClick={handleDelete}
+            >
+              <Icon icon="mdi:trash-can-outline" className="mr-1" /> Delete
+            </Button>
+          </div>
+        </CardFooter>
+      </Card>
     </motion.div>
   );
 };

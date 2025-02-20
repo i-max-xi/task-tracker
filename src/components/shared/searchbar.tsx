@@ -63,7 +63,7 @@ const SearchBar: React.FC = () => {
         task.description.toLowerCase().includes(query)
     );
 
-    dispatch({ type: "LOAD_TASKS", payload: filteredTasks });
+    dispatch({ type: "LOAD_SEARCH_RESULTS", payload: filteredTasks });
   };
 
   const handleFilterChange = (priority: "All" | "Low" | "Medium" | "High") => {

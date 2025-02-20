@@ -8,14 +8,17 @@ const TaskList: React.FC = () => {
   const { state } = useTaskContext();
   const [editTask, setEditTask] = useState<Task | null>(null);
 
+  // Show search results if available, otherwise show full tasks list
+  const taskList =
+    state.searchResults !== null ? state.searchResults : state.tasks;
+
   const filteredTasks =
     state.filter === "All"
-      ? state.tasks
-      : state.tasks.filter((task) => task.priority === state.filter);
+      ? taskList
+      : taskList.filter((task) => task.priority === state.filter);
 
   return (
     <div className="p-4">
-      {/* If no tasks */}
       {filteredTasks.length === 0 ? (
         <p className="text-gray-500">No tasks available.</p>
       ) : (
@@ -28,7 +31,6 @@ const TaskList: React.FC = () => {
         </div>
       )}
 
-      {/* Task Form (as a modal) */}
       {editTask && (
         <TaskForm editTask={editTask} onClose={() => setEditTask(null)} />
       )}

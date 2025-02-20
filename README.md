@@ -1,31 +1,57 @@
-# React + TypeScript + Vite
+# Task Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This **Task Tracker** is a simple yet efficient task management application built using **React, TypeScript, Context API, NextUI, and Framer Motion**. It allows users to:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Add, edit, and delete tasks.
+- Search tasks both by name and description.
+- Filter tasks by priority.
+- Persist tasks using local storage.
 
-## Expanding the ESLint configuration
+## 🚀 Running the Application Locally
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### **1️⃣ Clone the Repository**
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```sh
+git clone https://github.com/i-max-xi/task-tracker.git
+cd task-tracker
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# foundry-web-v2
+### **2️⃣ Install Dependencies**
+
+```sh
+npm install  # or yarn install
+```
+
+### ** 3️⃣ Start the Development Server**
+
+```sh
+npm run dev
+```
+
+Then, open http://localhost:5173/ in your browser.
+
+### ** 4️⃣ Run Tests**
+
+```sh
+npm run run test
+```
+
+## Code Organization and Implementation
+
+## Components
+
+- `ui/` contains core UI components like **Task List**, **Task Item**, and **Task Form**.
+- `shared/` contains reusable components like **Search Bar** and **Priority Filter**.
+
+## Context API (`task-context.tsx`)
+
+- Manages global state for tasks and search filtering.
+- Uses `useReducer` for state updates.
+- Saves tasks to `localStorage` to persist them between sessions.
+
+## Testing
+
+- Implemented using **Jest**
+- Covers unit tests for core components like **Task List**, **Task Item**, and **Priority Filter**.

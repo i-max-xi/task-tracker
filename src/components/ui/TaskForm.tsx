@@ -93,10 +93,10 @@ const TaskForm: React.FC<TaskFormProps> = ({ editTask, onClose }) => {
           </Select>
         </ModalBody>
         <ModalFooter>
-          <Button variant="light" onClick={onClose}>
+          <Button variant="light" onPress={onClose}>
             Cancel
           </Button>
-          <Button color="primary" onClick={() => handleSubmit()}>
+          <Button color="primary" onPress={() => handleSubmit()}>
             {editTask ? "Update Task" : "Add Task"}
           </Button>
         </ModalFooter>

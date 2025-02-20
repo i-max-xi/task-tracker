@@ -5,6 +5,7 @@ export type Task = {
   title: string;
   description: string;
   priority: "Low" | "Medium" | "High";
+  completed?: boolean;
 };
 
 export type TaskState = {
@@ -19,7 +20,8 @@ type TaskAction =
   | { type: "DELETE_TASK"; payload: string }
   | { type: "SET_FILTER"; payload: "All" | "Low" | "Medium" | "High" }
   | { type: "LOAD_TASKS"; payload: Task[] }
-  | { type: "LOAD_SEARCH_RESULTS"; payload: Task[] | null };
+  | { type: "LOAD_SEARCH_RESULTS"; payload: Task[] | null }
+  | { type: "TOGGLE_TASK_COMPLETE"; payload: string }; // (by task ID)
 
 // Load tasks from localStorage
 const loadTasks = (): Task[] => {
@@ -63,6 +65,16 @@ const taskReducer = (state: TaskState, action: TaskAction): TaskState => {
     case "LOAD_SEARCH_RESULTS":
       newState = { ...state, searchResults: action.payload };
       break;
+    case "TOGGLE_TASK_COMPLETE":
+      return {
+        ...state,
+        tasks: state.tasks.map((task) =>
+          task.id === action.payload
+            ? { ...task, completed: !task.completed }
+            : task
+        ),
+      };
+
     default:
       return state;
   }

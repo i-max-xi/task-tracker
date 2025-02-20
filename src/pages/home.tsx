@@ -13,7 +13,7 @@ const Home: React.FC = () => {
       <div className="py-5 md:py-10 mx-auto bg-white w-full flex justify-center items-center flex-col">
         <h1 className="text-3xl font-bold text-center mb-4">Task Tracker</h1>
 
-        <div className="w-[60%] mx-auto">
+        <div className="lg:w-[60%] w-[90%] mx-auto">
           <SearchBar />
         </div>
 

@@ -39,8 +39,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ editTask, onClose }) => {
     }
   }, [editTask]);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     if (!title.trim() || !description.trim()) return;
 
     if (editTask) {
@@ -97,7 +96,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ editTask, onClose }) => {
           <Button variant="light" onClick={onClose}>
             Cancel
           </Button>
-          <Button color="primary" onClick={handleSubmit}>
+          <Button color="primary" onClick={() => handleSubmit()}>
             {editTask ? "Update Task" : "Add Task"}
           </Button>
         </ModalFooter>

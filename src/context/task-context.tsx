@@ -9,6 +9,7 @@ export type Task = {
 
 type TaskState = {
   tasks: Task[];
+  searchResults: Task[] | null; // Separate state for search results
   filter: "All" | "Low" | "Medium" | "High";
 };
 
@@ -17,7 +18,8 @@ type TaskAction =
   | { type: "EDIT_TASK"; payload: Task }
   | { type: "DELETE_TASK"; payload: string }
   | { type: "SET_FILTER"; payload: "All" | "Low" | "Medium" | "High" }
-  | { type: "LOAD_TASKS"; payload: Task[] };
+  | { type: "LOAD_TASKS"; payload: Task[] }
+  | { type: "LOAD_SEARCH_RESULTS"; payload: Task[] | null };
 
 // Load tasks from localStorage
 const loadTasks = (): Task[] => {
@@ -27,7 +29,8 @@ const loadTasks = (): Task[] => {
 
 // Initial state
 const initialState: TaskState = {
-  tasks: loadTasks(), // to load tasks on startup
+  tasks: loadTasks(), // Load tasks on startup
+  searchResults: null, // No search results initially
   filter: "All",
 };
 
@@ -55,7 +58,10 @@ const taskReducer = (state: TaskState, action: TaskAction): TaskState => {
       newState = { ...state, filter: action.payload };
       break;
     case "LOAD_TASKS":
-      newState = { ...state, tasks: action.payload };
+      newState = { ...state, tasks: action.payload, searchResults: null };
+      break;
+    case "LOAD_SEARCH_RESULTS":
+      newState = { ...state, searchResults: action.payload };
       break;
     default:
       return state;

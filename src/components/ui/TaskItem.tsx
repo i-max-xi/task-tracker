@@ -32,7 +32,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onEdit }) => {
       <Card shadow="sm" className="p-4">
         <CardHeader className="flex gap-1 items-center">
           <Checkbox />
-          <h3 className="text-lg font-semibold flex items-center gap-2">
+          <h3 className="text-lg font-semibold flex items-center gap-2 capitalize">
             {task.title}
           </h3>
         </CardHeader>

@@ -7,7 +7,7 @@ export type Task = {
   priority: "Low" | "Medium" | "High";
 };
 
-type TaskState = {
+export type TaskState = {
   tasks: Task[];
   searchResults: Task[] | null; // Separate state for search results
   filter: "All" | "Low" | "Medium" | "High";
@@ -72,7 +72,7 @@ const taskReducer = (state: TaskState, action: TaskAction): TaskState => {
   return newState;
 };
 
-const TaskContext = createContext<{
+export const TaskContext = createContext<{
   state: TaskState;
   dispatch: React.Dispatch<TaskAction>;
 } | null>(null);

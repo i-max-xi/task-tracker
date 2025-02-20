@@ -66,7 +66,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onEdit }) => {
               color="primary"
               variant="light"
               size="sm"
-              onClick={() => onEdit(task)}
+              onPress={() => onEdit(task)}
             >
               <Icon icon="mdi:pencil" className="mr-1" /> Edit
             </Button>
@@ -74,7 +74,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onEdit }) => {
               color="danger"
               variant="light"
               size="sm"
-              onClick={handleDelete}
+              onPress={handleDelete}
             >
               <Icon icon="mdi:trash-can-outline" className="mr-1" /> Delete
             </Button>

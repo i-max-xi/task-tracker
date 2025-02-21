@@ -4,6 +4,14 @@ import { TaskState, TaskContext } from "@/context/task-context";
 import "@testing-library/jest-dom";
 import { ReactNode } from "react";
 
+jest.mock("framer-motion", () => ({
+  ...jest.requireActual("framer-motion"),
+  domAnimation: jest.fn(),
+  AnimatePresence: ({ children }: { children: React.ReactNode }) => (
+    <>{children}</>
+  ),
+}));
+
 const mockState: TaskState = {
   tasks: [
     {

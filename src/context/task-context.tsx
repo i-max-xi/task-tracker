@@ -5,7 +5,7 @@ export type Task = {
   title: string;
   description: string;
   priority: "Low" | "Medium" | "High";
-  completed?: boolean;
+  completed: boolean;
 };
 
 export type TaskState = {
@@ -26,7 +26,12 @@ type TaskAction =
 // Load tasks from localStorage
 const loadTasks = (): Task[] => {
   const storedTasks = localStorage.getItem("tasks");
-  return storedTasks ? JSON.parse(storedTasks) : [];
+  return storedTasks
+    ? JSON.parse(storedTasks).map((task: Task) => ({
+        ...task,
+        completed: task.completed ?? false,
+      }))
+    : [];
 };
 
 // Initial state
@@ -66,7 +71,7 @@ const taskReducer = (state: TaskState, action: TaskAction): TaskState => {
       newState = { ...state, searchResults: action.payload };
       break;
     case "TOGGLE_TASK_COMPLETE":
-      return {
+      newState = {
         ...state,
         tasks: state.tasks.map((task) =>
           task.id === action.payload
@@ -74,6 +79,8 @@ const taskReducer = (state: TaskState, action: TaskAction): TaskState => {
             : task
         ),
       };
+      localStorage.setItem("tasks", JSON.stringify(newState.tasks)); // Persist completed too
+      return newState;
 
     default:
       return state;

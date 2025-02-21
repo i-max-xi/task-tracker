@@ -33,7 +33,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onEdit }) => {
       exit={{ opacity: 0, y: -10 }}
       layout
     >
-      <Card shadow="sm" className="p-4">
+      <Card shadow="sm" className="p-4 flex flex-col justify-between h-full">
         <CardHeader className="flex gap-2 items-center">
           <Checkbox
             isSelected={task.completed}
@@ -49,7 +49,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onEdit }) => {
           </h3>
         </CardHeader>
         <CardBody>
-          <p className="text-gray-600">{task.description}</p>
+          <p className="text-gray-600 text-sm">{task.description}</p>
         </CardBody>
         <CardFooter className="flex justify-between items-center">
           <p

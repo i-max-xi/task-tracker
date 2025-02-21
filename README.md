@@ -10,6 +10,10 @@ This **Task Tracker** is a simple yet efficient task management application buil
 - Check tasks as completed
 - Persist tasks using local storage.
 
+### Demo
+
+[Recorded Demo](https://www.loom.com/share/c91fa7c00978486a8b0dcf97f3581c2e?sid=9a4c6566-ae1c-4c03-bbc7-02b2a6f75da2)
+
 ## 🚀 Running the Application Locally
 
 ### **1️⃣ Clone the Repository**

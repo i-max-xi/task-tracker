@@ -18,11 +18,11 @@ const TaskList: React.FC = () => {
       : taskList.filter((task) => task.priority === state.filter);
 
   return (
-    <div className="p-4">
+    <div className="p-4 px-8">
       {filteredTasks.length === 0 ? (
         <p className="text-gray-500">No tasks available.</p>
       ) : (
-        <div className="grid md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <AnimatePresence>
             {filteredTasks.map((task) => (
               <TaskItem key={task.id} task={task} onEdit={setEditTask} />

@@ -7,8 +7,8 @@ import {
   CardBody,
   CardFooter,
   Checkbox,
+  Button,
 } from "@nextui-org/react";
-import { Button } from "@nextui-org/react";
 
 type TaskItemProps = {
   task: Task;
@@ -22,6 +22,10 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onEdit }) => {
     dispatch({ type: "DELETE_TASK", payload: task.id });
   };
 
+  const handleToggleComplete = () => {
+    dispatch({ type: "TOGGLE_TASK_COMPLETE", payload: task.id });
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -29,15 +33,23 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onEdit }) => {
       exit={{ opacity: 0, y: -10 }}
       layout
     >
-      <Card shadow="sm" className="p-4">
-        <CardHeader className="flex gap-1 items-center">
-          <Checkbox />
-          <h3 className="text-lg font-semibold flex items-center gap-2 capitalize">
+      <Card shadow="sm" className="p-4 flex flex-col justify-between h-full">
+        <CardHeader className="flex gap-2 items-center">
+          <Checkbox
+            isSelected={task.completed}
+            onChange={handleToggleComplete}
+            aria-label="Mark as completed"
+          />
+          <h3
+            className={`text-lg font-semibold flex items-center gap-2 capitalize transition-all ${
+              task.completed ? "line-through text-gray-400" : ""
+            }`}
+          >
             {task.title}
           </h3>
         </CardHeader>
         <CardBody>
-          <p className="text-gray-600">{task.description}</p>
+          <p className="text-gray-600 text-sm">{task.description}</p>
         </CardBody>
         <CardFooter className="flex justify-between items-center">
           <p

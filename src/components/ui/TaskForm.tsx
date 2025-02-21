@@ -20,6 +20,7 @@ type TaskFormProps = {
     title: string;
     description: string;
     priority: "Low" | "Medium" | "High";
+    completed: boolean;
   };
   onClose: () => void;
 };
@@ -45,12 +46,24 @@ const TaskForm: React.FC<TaskFormProps> = ({ editTask, onClose }) => {
     if (editTask) {
       dispatch({
         type: "EDIT_TASK",
-        payload: { ...editTask, title, description, priority },
+        payload: {
+          ...editTask,
+          title,
+          description,
+          priority,
+          completed: editTask.completed,
+        },
       });
     } else {
       dispatch({
         type: "ADD_TASK",
-        payload: { id: uuidv4(), title, description, priority },
+        payload: {
+          id: uuidv4(),
+          title,
+          description,
+          priority,
+          completed: false,
+        },
       });
     }
     onClose(); // Close modal after submission

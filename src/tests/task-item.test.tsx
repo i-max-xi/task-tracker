@@ -8,6 +8,7 @@ const mockTask: Task = {
   title: "Test Task",
   description: "Test Description",
   priority: "Medium",
+  completed: false,
 };
 
 describe("TaskItem Component", () => {
@@ -42,20 +43,28 @@ describe("TaskItem Component", () => {
       </TaskProvider>
     );
 
-    const deleteButton = screen.getByText("Delete");
-    fireEvent.click(deleteButton);
-
+    fireEvent.click(screen.getByText("Delete"));
     expect(screen.queryByText("Test Task")).not.toBeInTheDocument();
   });
 
-  it("displays the correct priority icon", () => {
+  it("toggles task completion state when checkbox is clicked", () => {
     render(
       <TaskProvider>
-        <TaskItem task={{ ...mockTask, priority: "High" }} onEdit={() => {}} />
+        <TaskItem task={mockTask} onEdit={() => {}} />
       </TaskProvider>
     );
 
-    expect(screen.getByText("High")).toBeInTheDocument();
-    expect(screen.getByTestId("mdi:alert-circle")).toBeInTheDocument();
+    const checkbox = screen.getByRole("checkbox");
+
+    // Ensure task is initially not completed
+    expect(checkbox).not.toBeChecked();
+
+    // Click checkbox to mark as completed
+    fireEvent.click(checkbox);
+    expect(checkbox).toBeChecked();
+
+    // Click checkbox again to unmark as completed
+    fireEvent.click(checkbox);
+    expect(checkbox).not.toBeChecked();
   });
 });

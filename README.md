@@ -7,6 +7,7 @@ This **Task Tracker** is a simple yet efficient task management application buil
 - Add, edit, and delete tasks.
 - Search tasks both by name and description.
 - Filter tasks by priority.
+- Check tasks as completed
 - Persist tasks using local storage.
 
 ## 🚀 Running the Application Locally
